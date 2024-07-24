@@ -5,7 +5,7 @@ include_once "DB/dados.php";
 
 $serie = $_GET["serie"];
 
-list($estado, $Cliente, $Local, $UltCont, $Email, $Serie) = preenchimento($conn, $serie);
+list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento($conn, $serie);
 ?>
 
 <!DOCTYPE html>
@@ -25,37 +25,37 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie) = preenchimento($conn,
         <div class="form-group">
             <div class="form-input">
                 <label for="patrimonio">Estado *</label>
-                <input type="text" id="patrimonio" name="patrimonio" value="<?= $estado ?>" required>
+                <input type="text" id="patrimonio" name="patrimonio" placeholder="<?= $estado ?>" value="<?= $estado ?>" required readonly>
             </div>
             <div class="form-input">
                 <label for="serie">Série *</label>
-                <input id="serie" name="serie" rows="4" placeholder="<?= $serie;?>" required></input>
+                <input id="serie" name="serie" rows="4" placeholder="<?= $serie;?>" value="<?= $serie?>" required readonly></input>
             </div>
         </div>
         <div class="form-group">
             <div class="form-input">
                 <label for="cliente">Nome do Cliente</label>
-                <input type="text" id="cliente" name="cliente" placeholder="<?= $Cliente; ?>" value="<?= $Cliente; ?>">
+                <input type="text" id="cliente" name="cliente" placeholder="<?= $Cliente; ?>" value="<?= $Cliente; ?>" readonly>
             </div>
             <div class="form-input">
                 <label for="local">Local*</label>
-                <input type="text" id="local" name="local" placeholder="<?= $Local; ?>" required>
+                <input type="text" id="local" name="local" placeholder="<?= $Local; ?>" value="<?= $Local; ?>" required readonly>
             </div>
         </div>
         <div class="form-group">
             <div class="form-input">
                 <label for="abertura">Solicitante *</label>
-                <input type="text" id="abertura" name="abertura" required>
+                <input type="text" id="abertura" name="abertura" placeholder="Quem esta abrindo a OS" required>
             </div>
             <div class="form-input">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="<?= $Email; ?>" required>
+                <label for="whatsapp">Whatsapp *</label>
+                <input type="text" id="whatsapp" name="whatsapp" placeholder="<?= $Tel?>" required>
             </div>
         </div>
         <div class="form-group">
             <div class="form-input">
-                <label for="whatsapp">Whatsapp *</label>
-                <input type="text" id="whatsapp" name="whatsapp" placeholder="<?= $Tel?>" required>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="<?= $Email; ?>" required>
             </div>
         </div>
         <div class="form-group">
@@ -67,7 +67,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie) = preenchimento($conn,
         <div class="form-group">
             <div class="form-input">
                 <label for="contador">Último Contador</label>
-                <input type="text" id="contador" name="contador" placeholder="<?= $UltCont; ?>">
+                <input type="text" id="contador" name="contador" placeholder="<?= $UltCont; ?>" value="<?= $UltCont; ?>" readonly>
             </div>
             <div class="form-input">
                 <label for="periodo">Período</label>

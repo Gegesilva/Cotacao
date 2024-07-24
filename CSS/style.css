@@ -12,7 +12,7 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: auto;
+    width: 40rem;
 }
 h1 {
     text-align: center;
@@ -63,7 +63,7 @@ img{
 }
 .submit-btn {
     display: block;
-    width: 100%;
+    width: 30%;
     padding: 10px;
     background: 
     blue;
@@ -72,8 +72,10 @@ img{
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 .submit-btn:hover {
-    background: #c20511;
+    background: #15c205;
 }
 

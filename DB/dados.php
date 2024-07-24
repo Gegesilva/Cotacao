@@ -7,7 +7,8 @@ function preenchimento($conn, $serie)
                 TB02112_LOCAL Local,
                 TB02112_EMAIL Email,
                 9999 UltCont,
-                TB02112_NUMSERIE Serie
+                TB02112_NUMSERIE Serie,
+				TB02112_FONEAUX Tel
                 
             FROM TB02112
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
@@ -24,8 +25,9 @@ function preenchimento($conn, $serie)
         $UltCont = $row['UltCont'];
         $Email = $row['Email'];
         $Serie= $row['Serie'];
+        $Tel= $row['Tel'];
     }
 
-    return [$estado, $Cliente, $Local, $UltCont, $Email, $Serie];
+    return [$estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel];
 
 }
