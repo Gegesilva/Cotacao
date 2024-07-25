@@ -23,7 +23,7 @@ $('#form-geral').submit(function(e){
     console.log(d_estado);
 
     $.ajax({
-        url: '',
+        url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/index.php',
         method: 'POST',
         data: {estado: d_estado, 
             serie: d_serie, cliente: d_cliente, 

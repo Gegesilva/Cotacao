@@ -16,11 +16,10 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DATABIT</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <script src="JS/script.js" charset="utf-8"></script>
 </head>
 
 <body>
-    <form method="POST" class="form-geral">
+    <form method="POST" class="form-geral" id="form-geral">
         <img src="img/logo.jpg" alt="logo">
         <h1>ABERTURA CHAMADO TEC</h1>
         <div class="form-group">
@@ -60,8 +59,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         <div class="form-group">
             <div class="form-input">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="<?= $Email; ?>" value="<?= $Email; ?>"
-                    required>
+                <input type="text" id="email" name="email" placeholder="<?= $Email; ?>" value="<?= $Email; ?>" required>
             </div>
         </div>
         <div class="form-group">
@@ -87,8 +85,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         </div>
         <button type="submit" class="submit-btn">Enviar OS</button>
     </form>
-    <script src="JS/jQuery/jquery-3.7.1.js" charset="utf-8"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-</body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="JS/script.js" charset="utf-8"></script>
+  </body>
 </html>
