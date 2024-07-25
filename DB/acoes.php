@@ -1,9 +1,10 @@
 <?php
 function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito)
 {
+    global $statusInicial;
 
-    $sql = "INSERT INTO TB02115 ( 
-        TB02115_CODIGO,
+    $sql = "INSERT INTO TB02115( 
+		TB02115_CODIGO,
         TB02115_DTCAD,
         TB02115_ESTADO,
         TB02115_LOCAL,
@@ -12,19 +13,22 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
         TB02115_NUMSERIE,
         TB02115_FONE,
 		TB02115_SOLICITANTE,
-		TB02115_OBS)
+		TB02115_NOME,
+        TB02115_STATUS)
         VALUES(
-            (SELECT TOP 1 TB02115_CODIGO + 1 FROM TB02115 ORDER BY TB02115_DTCAD DESC),
+		   (SELECT TOP 1 TB02115_CODIGO + 2 FROM TB02115 ORDER BY TB02115_DTCAD DESC),
            GETDATE(),
-           $estado,
-           $local, 
-           $email, 
+           '$estado',
+           '$local', 
+           '$email', 
            $contpb, 
-           $serie, 
-           $whatsapp,
-           $solicitante,
-           $defeito
-        )";
+           '$serie', 
+           '$whatsapp',
+           '$solicitante',
+           '$defeito',
+           '$statusInicial'
+        )
+        ";
 
     $stmt = sqlsrv_query($conn, $sql);
 

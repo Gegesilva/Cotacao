@@ -1,8 +1,3 @@
-/* function limpar(){
-    $("input").val("");
-    $("textarea").val("");
-} */
-
 
 $('#form-geral').submit(function(e){
     e.preventDefault();

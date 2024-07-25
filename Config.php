@@ -6,3 +6,5 @@ $server = 'localhost';
 $base = 'MAQLAREM';
 $usuarioBanco = 'sa';
 $SenhaBanco = 'databit@2022';
+
+$statusInicial = '01';

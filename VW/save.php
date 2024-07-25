@@ -9,6 +9,8 @@ $email = $_POST['email'];
 $contpb = $_POST['contador'];
 $serie = $_POST['serie'];
 $whatsapp = $_POST['whatsapp'];
+$solicitante = $_POST['solicitante'];
+$defeito = $_POST['defeito'];
 
 if (isset($serie)) {
     gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
