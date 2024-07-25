@@ -6,7 +6,7 @@ include_once "../Config.php";
 
 $estado = $_POST['estado'];
 $local = $_POST['local'];
-$email = $_POST['email'];
+$email = $_POST['e-mail'];
 $contpb = $_POST['contador'];
 $serie = $_POST['serie'];
 $whatsapp = $_POST['whatsapp'];
