@@ -33,6 +33,12 @@ img{
     width: 100%;
     margin-left: 2px;    
 }
+.form-serie{
+    width: 50%;
+    margin-left: auto;    
+    margin-right: auto;
+}
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
@@ -75,7 +81,28 @@ img{
     margin-left: auto;
     margin-right: auto;
 }
-.submit-btn:hover {
-    background: #15c205;
+.voltar-btn {
+    display: block;
+    width: 30%;
+    padding: 10px;
+    background: 
+    #15c205;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+.voltar-btn:hover {
+    background:rgb(172, 175, 4);
 }
 
+.submit-btn:hover {
+    background: #e9c604;
+}
+
+.btn-index{
+    display: flex;
+}

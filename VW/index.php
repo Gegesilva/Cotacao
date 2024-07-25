@@ -23,7 +23,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
 </head>
 
 <body>
-    <form method="POST" class="form-geral" action="<?= $url?>/save.php">
+    <form method="POST" class="form-geral" action="<?= $url ?>/save.php">
         <img src="../img/logo.jpg" alt="logo">
         <h1>ABERTURA CHAMADO TEC</h1>
         <div class="form-group">
@@ -63,7 +63,8 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         <div class="form-group">
             <div class="form-input">
                 <label for="e-mail">E-mail</label>
-                <input type="text" id="e-mail" name="e-mail" placeholder="<?= $Email; ?>" value="<?= $Email; ?>" required>
+                <input type="text" id="e-mail" name="e-mail" placeholder="<?= $Email; ?>" value="<?= $Email; ?>"
+                    required>
             </div>
         </div>
         <div class="form-group">
@@ -87,9 +88,13 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 </select>
             </div>
         </div>
-        <button type="submit" class="submit-btn">Enviar OS</button>
+        <div class="btn-index">
+            <button type="submit" class="submit-btn">Enviar OS</button>
+            <button onClick="window.location='http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/inputSerie.php';" type="submit" class="voltar-btn">Voltar</button>
+        </div>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../JS/script.js" charset="utf-8"></script>
-  </body>
+</body>
+
 </html>
