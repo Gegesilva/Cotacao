@@ -1,7 +1,7 @@
-function limpar(){
+/* function limpar(){
     $("input").val("");
     $("textarea").val("");
-}
+} */
 
 
 $('#form-geral').submit(function(e){
@@ -20,10 +20,14 @@ $('#form-geral').submit(function(e){
 
     let resultado = document.getElementById('form-geral');
 
-    console.log(d_estado, d_cliente);
+    console.log(d_estado,d_serie, d_cliente, 
+            d_local, d_solitante, 
+            d_whatsapp, d_email, 
+            d_defeito, d_contador, 
+            d_periodo)
 
     $.ajax({
-        url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/index.php',
+        url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/save.php',
         method: 'POST',
         data: {estado: d_estado, 
             serie: d_serie, cliente: d_cliente, 
@@ -31,7 +35,7 @@ $('#form-geral').submit(function(e){
             whatsapp: d_whatsapp, email: d_email, 
             defeito: d_defeito, contador: d_contador, 
             periodo: d_periodo},
-        dataType: 'json'
+        /* dataType: 'json' */
     }).done(function(retorno){
         console.log(retorno)
         resultado.innerHTML = retorno

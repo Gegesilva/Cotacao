@@ -9,24 +9,30 @@ $serie = $_POST['serie'];
 $whatsapp = $_POST['whatsapp']; */
 
 
-function gravaOS($conn,$estado, $local, $email, $contpb, $serie, $whatsapp)
+function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito)
 {
     /* global $estado, $local, $email, $contpb, $serie, $whatsapp; */
 
-    $sql = "INSERT INTO ( 
-        TB02112_ESTADO,
-        TB02112_LOCAL,
-        TB02112_EMAIL,
+    $sql = "INSERT INTO TB02115 ( 
+        TB02115_DTCAD,
+        TB02115_ESTADO,
+        TB02115_LOCAL,
+        TB02115_EMAIL,
         TB02115_CONTPB,
-        TB02112_NUMSERIE,
-        TB02112_FONEAUX)
+        TB02115_NUMSERIE,
+        TB02115_FONE,
+		TB02115_SOLICITANTE,
+		TB02115_OBS)
         VALUES(
+           GETDATE(),
            $estado,
            $local, 
            $email, 
            $contpb, 
            $serie, 
-           $whatsapp
+           $whatsapp,
+           $solicitante,
+           $defeito
         )";
 
     $stmt = sqlsrv_query($conn, $sql);
