@@ -36,3 +36,4 @@ $('#form-geral').submit(function(e){
         resultado.innerHTML = retorno
     })
 })
+

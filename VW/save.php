@@ -2,6 +2,7 @@
 header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../DB/conexaoSQL.php";
 include_once "../DB/acoes.php";
+include_once "../Config.php";
 
 $estado = $_POST['estado'];
 $local = $_POST['local'];
@@ -33,7 +34,7 @@ if (isset($serie)) {
 </head>
 
 <body>
-    <form class="form-geral" id="form-geral">
+    <form class="form-voltar" id="form-voltar" action="<?= $url?>/inputSerie.php">
         <img src="../img/logo.jpg" alt="logo">
         <h1>OS ABERTA!</h1>
         <button type="submit" class="submit-btn">VOLTAR</button>
