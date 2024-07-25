@@ -6,7 +6,7 @@ function preenchimento($conn, $serie)
                 TB01008_NOME Cliente,
                 TB02112_LOCAL Local,
                 TB02112_EMAIL Email,
-                9999 UltCont,
+                (SELECT TOP 1 TB02117_TOTPB FROM TB02117 WHERE TB02117_NUMSERIE = TB02112_NUMSERIE ORDER BY TB02117_DTCAD DESC) UltCont,
                 TB02112_NUMSERIE Serie,
 				TB02112_FONEAUX Tel
                 

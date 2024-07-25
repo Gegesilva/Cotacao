@@ -16,50 +16,56 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DATABIT</title>
     <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/script.js" charset="utf-8"></script>
 </head>
 
 <body>
-    <form>
+    <form method="POST" class="form-geral">
         <img src="img/logo.jpg" alt="logo">
         <h1>ABERTURA CHAMADO TEC</h1>
         <div class="form-group">
             <div class="form-input">
-                <label for="patrimonio">Estado *</label>
-                <input type="text" id="patrimonio" name="patrimonio" placeholder="<?= $estado ?>" value="<?= $estado ?>" required readonly>
+                <label for="estado">Estado *</label>
+                <input type="text" id="estado" name="estado" placeholder="<?= $estado ?>" value="<?= $estado ?>"
+                    required readonly>
             </div>
             <div class="form-input">
                 <label for="serie">Série *</label>
-                <input id="serie" name="serie" rows="4" placeholder="<?= $serie;?>" value="<?= $serie?>" required readonly></input>
+                <input id="serie" name="serie" rows="4" placeholder="<?= $serie; ?>" value="<?= $serie ?>" required
+                    readonly></input>
             </div>
         </div>
         <div class="form-group">
             <div class="form-input">
                 <label for="cliente">Nome do Cliente</label>
-                <input type="text" id="cliente" name="cliente" placeholder="<?= $Cliente; ?>" value="<?= $Cliente; ?>" readonly>
+                <input type="text" id="cliente" name="cliente" placeholder="<?= $Cliente; ?>" value="<?= $Cliente; ?>"
+                    readonly>
             </div>
             <div class="form-input">
                 <label for="local">Local*</label>
-                <input type="text" id="local" name="local" placeholder="<?= $Local; ?>" value="<?= $Local; ?>" required readonly>
+                <input type="text" id="local" name="local" placeholder="<?= $Local; ?>" value="<?= $Local; ?>" required
+                    readonly>
             </div>
         </div>
         <div class="form-group">
             <div class="form-input">
-                <label for="abertura">Solicitante *</label>
-                <input type="text" id="abertura" name="abertura" placeholder="Quem esta abrindo a OS" required>
+                <label for="solicitante">Solicitante *</label>
+                <input type="text" id="solicitante" name="solicitante" placeholder="Quem esta abrindo a OS" required>
             </div>
             <div class="form-input">
                 <label for="whatsapp">Whatsapp *</label>
-                <input type="text" id="whatsapp" name="whatsapp" placeholder="<?= $Tel?>" required>
+                <input type="text" id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>" required>
             </div>
         </div>
         <div class="form-group">
             <div class="form-input">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="<?= $Email; ?>" required>
+                <input type="email" id="email" name="email" placeholder="<?= $Email; ?>" value="<?= $Email; ?>"
+                    required>
             </div>
         </div>
         <div class="form-group">
-        <div class="form-input">
+            <div class="form-input">
                 <label for="defeito">Defeito Apresentado *</label>
                 <textarea id="defeito" name="defeito" rows="4" required></textarea>
             </div>
@@ -67,7 +73,8 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         <div class="form-group">
             <div class="form-input">
                 <label for="contador">Último Contador</label>
-                <input type="text" id="contador" name="contador" placeholder="<?= $UltCont; ?>" value="<?= $UltCont; ?>" readonly>
+                <input type="text" id="contador" name="contador" placeholder="<?= $UltCont; ?>" value="<?= $UltCont; ?>"
+                    readonly>
             </div>
             <div class="form-input">
                 <label for="periodo">Período</label>
@@ -80,6 +87,8 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         </div>
         <button type="submit" class="submit-btn">Enviar OS</button>
     </form>
+    <script src="JS/jQuery/jquery-3.7.1.js" charset="utf-8"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </body>
 
 </html>
