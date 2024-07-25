@@ -1,7 +1,7 @@
 <?php
 /* Variaveis a serem alteradas, mantenha o padrão de preenchimento */
 
-$Url = 'http://localhost:8090/phpprod/maqlarem/AberturaOS';
+$Url = 'http://localhost:8090/phpprod/maqlarem/VW/AberturaOS';
 $server = 'localhost';
 $base = 'MAQLAREM';
 $usuarioBanco = 'sa';

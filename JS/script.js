@@ -20,10 +20,10 @@ $('#form-geral').submit(function(e){
 
     let resultado = document.getElementById('form-geral');
 
-    console.log(d_estado);
+    console.log(d_estado, d_cliente);
 
     $.ajax({
-        url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/index.php',
+        url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/index.php',
         method: 'POST',
         data: {estado: d_estado, 
             serie: d_serie, cliente: d_cliente, 
