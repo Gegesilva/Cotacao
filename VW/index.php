@@ -58,8 +58,8 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         </div>
         <div class="form-group">
             <div class="form-input">
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" placeholder="<?= $Email; ?>" value="<?= $Email; ?>" required>
+                <label for="e-mail">E-mail</label>
+                <input type="text" id="e-mail" name="e-mail" placeholder="<?= $Email; ?>" value="<?= $Email; ?>" required>
             </div>
         </div>
         <div class="form-group">

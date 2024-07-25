@@ -31,7 +31,7 @@ if (isset($serie)) {
 </head>
 
 <body>
-    <form method="POST" class="form-geral" id="form-geral">
+    <form class="form-geral" id="form-geral">
         <img src="../img/logo.jpg" alt="logo">
         <h1>OS ABERTA!</h1>
         <button type="submit" class="submit-btn">VOLTAR</button>

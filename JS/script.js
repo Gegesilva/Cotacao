@@ -13,18 +13,18 @@ $('#form-geral').submit(function(e){
     var d_local = $('#local').val();
     var d_solitante = $('#solicitante').val();
     var d_whatsapp = $('#whatsapp').val();
-    var d_email = $('#email').val();
+    var d_email = $('#e-mail').val();
     var d_defeito = $('#defeito').val();
     var d_contador = $('#contador').val();
     var d_periodo = $('#periodo').val();
 
     let resultado = document.getElementById('form-geral');
 
-    console.log(d_estado,d_serie, d_cliente, 
-            d_local, d_solitante, 
-            d_whatsapp, d_email, 
-            d_defeito, d_contador, 
-            d_periodo)
+    console.log(d_estado,d_serie,  
+                d_local, d_solitante, 
+                d_whatsapp, d_email, 
+                d_defeito, d_contador, 
+                d_periodo,d_cliente)
 
     $.ajax({
         url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/save.php',
