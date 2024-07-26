@@ -15,6 +15,7 @@ $defeito = $_POST['defeito'];
 
 if (isset($serie)) {
     gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
+    gravaHistorico($conn, $serie, $defeito, $statusInicial);
 
 } else {
     return;

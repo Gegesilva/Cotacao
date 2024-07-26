@@ -86,6 +86,48 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 
 }
 
-function gravaHistorico(){
-    
+function gravaHistorico($conn, $serie, $defeito, $statusInicial){
+    $sql="INSERT INTO TB02130
+            (TB02130_CODIGO,
+            TB02130_DATA, 
+            TB02130_USER,
+            TB02130_STATUS,
+            TB02130_NOME,
+            TB02130_OBS,
+            TB02130_CODTEC,
+            TB02130_PREVISAO,
+            TB02130_NOMETEC,
+            TB02130_TIPO, 
+            TB02130_CODCAD,
+            TB02130_CODEMP,
+            TB02130_DATAEXEC,
+            TB02130_HORASCOM,
+            TB02130_HORASFIM)
+         SELECT TOP 1
+            (SELECT TOP 1 
+				FORMAT((TB02115_CODIGO + 2), '000000')
+			FROM TB02115 
+			WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + 2) AND TB00002_TABELA = 'TB02115') 
+			ORDER BY TB02115_DTCAD DESC),
+            GETDATE(),
+            'APP ABERTURA_OS', 
+            '$statusInicial', 
+            TB01073_NOME, 
+            '$defeito',
+            TB02115_CODTEC,
+            NULL,
+            TB01024_NOME, 
+            'O',
+            TB02115_CODCLI,
+            TB02115_CODEMP,
+            GETDATE(), 
+            '00:00', 
+            '00:00'
+        FROM TB02115
+        LEFT JOIN TB01073 ON TB01073_CODIGO = TB02115_STATUS
+        LEFT JOIN TB01024 ON TB01024_CODIGO = TB02115_CODTEC
+        WHERE TB02115_NUMSERIE = '$serie'
+        ORDER BY TB02115_DTCAD DESC";
+
+    $stmt = sqlsrv_query($conn, $sql);
 }
