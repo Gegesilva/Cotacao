@@ -16,8 +16,21 @@ $defeito = $_POST['defeito'];
 if (isset($serie)) {
     gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
 
-}else{
+} else {
     return;
+}
+
+
+$sql = "SELECT TOP 1 
+        TB02115_CODIGO numOS 
+        FROM TB02115 
+        ORDER BY TB02115_DTCAD DESC
+    ";
+$stmt = sqlsrv_query($conn, $sql);
+
+while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+    $numOS .= $row['numOS'];
+
 }
 
 
@@ -34,9 +47,9 @@ if (isset($serie)) {
 </head>
 
 <body>
-    <form class="form-voltar" id="form-voltar" action="<?= $url?>/inputSerie.php">
+    <form class="form-voltar" id="form-voltar" action="<?= $url ?>/inputSerie.php">
         <img src="../img/logo.jpg" alt="logo">
-        <h1>OS ABERTA!</h1>
+        <h1>OS <?= $numOS ?> ABERTA!</h1>
         <button type="submit" class="submit-btn">VOLTAR</button>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
