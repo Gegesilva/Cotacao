@@ -70,24 +70,20 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
         LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
         WHERE TB02112_NUMSERIE = '$serie'
                 )
-
-
-        
-        UPDATE TB00002
-            SET TB00002_COD = (SELECT TOP 1 
-                    TB02115_CODIGO
-            FROM TB02115 
-            WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = TB02115_CODIGO AND TB00002_TABELA = 'TB02115') 
-            ORDER BY TB02115_DTCAD DESC)
-        WHERE TB00002_TABELA = 'TB02115'
         ";
 
     $stmt = sqlsrv_query($conn, $sql);
 
 }
 
-function gravaHistorico($conn, $serie, $defeito, $statusInicial){
-    $sql="INSERT INTO TB02130
+function gravaHistorico($conn, $numOS ,$serie, $defeito, $statusInicial){
+    $sql="UPDATE TB00002
+    SET TB00002_COD = '$numOS'
+    WHERE TB00002_TABELA = 'TB02115'
+    
+    
+    
+    INSERT INTO TB02130
             (TB02130_CODIGO,
             TB02130_DATA, 
             TB02130_USER,
@@ -104,11 +100,7 @@ function gravaHistorico($conn, $serie, $defeito, $statusInicial){
             TB02130_HORASCOM,
             TB02130_HORASFIM)
          SELECT TOP 1
-            (SELECT TOP 1 
-				FORMAT((TB02115_CODIGO + 2), '000000')
-			FROM TB02115 
-			WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + 2) AND TB00002_TABELA = 'TB02115') 
-			ORDER BY TB02115_DTCAD DESC),
+            '$numOS',
             GETDATE(),
             'APP ABERTURA_OS', 
             '$statusInicial', 

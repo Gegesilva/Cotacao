@@ -15,13 +15,12 @@ $defeito = $_POST['defeito'];
 
 if (isset($serie)) {
     gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
-    gravaHistorico($conn, $serie, $defeito, $statusInicial);
 
 } else {
     return;
 }
 
-
+/* Pega o ultimo numero de OS aberto */
 $sql = "SELECT TOP 1 
         TB02115_CODIGO numOS 
         FROM TB02115 
@@ -33,8 +32,8 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $numOS .= $row['numOS'];
 
 }
-
-
+/* Grava o histórico do primeiro status na abertura */
+gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial);
 ?>
 
 <!DOCTYPE html>
