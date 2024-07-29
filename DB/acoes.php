@@ -1,7 +1,7 @@
 <?php
 function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito)
 {
-    global $statusInicial;
+    global $statusInicial, $salto;
 
     $sql = "INSERT INTO TB02115( 
 		TB02115_CODIGO,
@@ -35,9 +35,11 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
         (
 		SELECT 
             (SELECT TOP 1 
-				FORMAT((TB02115_CODIGO + 2), '000000')
+				FORMAT((TB02115_CODIGO + $salto), '000000')
 			FROM TB02115 
-			WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + 2) AND TB00002_TABELA = 'TB02115') 
+			WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + $salto) 
+            AND TB00002_TABELA = 'TB02115'
+            AND TB02115_CODIGO != (TB02115_CODIGO + $salto)) 
 			ORDER BY TB02115_DTCAD DESC),
            GETDATE(),
            '$estado',
