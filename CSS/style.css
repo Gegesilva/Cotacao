@@ -160,7 +160,25 @@ img {
     margin-right: auto;
 }
 
+.voltar-btn-form {
+    display: block;
+    width: 30%;
+    padding: 20px;
+    background: rgba(95, 240, 76, 0.637);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .voltar-btn:hover {
+    background: rgb(23, 131, 9);
+}
+
+.voltar-btn-form:hover {
     background: rgb(23, 131, 9);
 }
 

@@ -39,7 +39,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 			FROM TB02115 
 			WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + $salto) AND TB00002_TABELA = 'TB02115') 
             AND TB02115_CODIGO != (TB02115_CODIGO + $salto)  
-			ORDER BY TB02115_DTCAD DESC),
+			ORDER BY TB02115_CODIGO DESC),
            GETDATE(),
            '$estado',
            '$local', 

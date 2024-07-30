@@ -51,8 +51,38 @@ gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial);
     <title>DATABIT</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <style>
-        .div-form{
+        .div-form {
             filter: blur(10px);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 30%;
+            padding: 10px;
+            background: rgba(0, 0, 255, 0.568);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-btn {
+            background: white;
+        }
+
+        .voltar-btn-form {
+            background: white;
+        }
+
+        .voltar-btn-form:hover {
+            background: white;
+        }
+
+        .submit-btn:hover {
+            background: white;
         }
     </style>
 </head>
