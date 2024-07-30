@@ -26,6 +26,10 @@ body {
     text-align: center;
 }
 
+.input-whatsapp::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
 .div-form {
     position: absolute;
 }
