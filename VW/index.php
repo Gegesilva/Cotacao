@@ -94,7 +94,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
             <div class="btn-index">
                 <input type="hidden" name="trava" id="trava" value="1">
                 <button type="submit" class="submit-btn">Enviar OS</button>
-                <button onClick="window.location='http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/inputSerie.php';"
+                <button onClick="window.location='<?=$url?>/inputSerie.php';"
                     type="submit" class="voltar-btn-form">Voltar</button>
             </div>
         </form>
