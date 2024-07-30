@@ -52,7 +52,7 @@ gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial);
     <link rel="stylesheet" href="../CSS/style.css">
     <style>
         .div-form {
-            filter: blur(10px);
+            filter: blur(5px);
         }
 
         .submit-btn {
@@ -91,7 +91,7 @@ gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial);
     <div class="div-save">
         <form class="form-voltar" id="form-voltar" action="<?= $url ?>/inputSerie.php">
             <!-- <img src="../img/logo.jpg" alt="logo"> -->
-            <h1>OS <b class="OSCriada"><?= $numOS ?></b> ABERTA!</h1>
+            <h1>OS <b class="OSCriada"><?= $numOS ?></b></h1>
             <button onclick="window.location.reload()" type="submit" class="popup-btn">Fechar</button>
         </form>
     </div>
