@@ -18,16 +18,40 @@ function preenchimento($conn, $serie)
     ";
     $stmt = sqlsrv_query($conn, $sql);
 
-   while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
         $estado = $row['Estado'];
         $Cliente = $row['Cliente'];
         $Local = $row['Local'];
         $UltCont = $row['UltCont'];
         $Email = $row['Email'];
-        $Serie= $row['Serie'];
-        $Tel= $row['Tel'];
+        $Serie = $row['Serie'];
+        $Tel = $row['Tel'];
     }
 
     return [$estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel];
 
+}
+
+function PegaTipo($conn, $serie)
+{
+    $sql = "SELECT TOP 1
+                CASE 
+                    WHEN TB02115_PREVENTIVA = 'N' THEN 'NORMAL'
+                    WHEN TB02115_PREVENTIVA = 'P' THEN 'PREVENTIVA'
+                    WHEN TB02115_PREVENTIVA = 'I' THEN 'INSTALAÇÃO'
+                    WHEN TB02115_PREVENTIVA = 'D' THEN 'DESINSTALAÇÃO'
+                    WHEN TB02115_PREVENTIVA = 'A' THEN 'AFERIÇÃO'
+                END Tipo
+            FROM TB02115 
+            WHERE TB02115_NUMSERIE = '$serie' 
+            AND TB02115_DTFECHA IS NULL
+            GROUP BY TB02115_PREVENTIVA, TB02115_CODIGO
+            ORDER BY TB02115_CODIGO DESC
+    ";
+    $stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $Tipo .= 'Já existe uma OS em aberto do tipo '.$row['Tipo'].' para esse numero de série.';
+    }
+
+     echo $Tipo;
 }

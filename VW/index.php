@@ -26,6 +26,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         <form method="POST" class="form-geral" id="form-geral">
             <img src="../img/logo.jpg" alt="logo">
             <h1 class="titulos">ABERTURA CHAMADO TEC</h1>
+            <h6 class="msg-os"><?= PegaTipo($conn, $serie)?></h6>
             <div class="form-group">
                 <div class="form-input">
                     <label for="estado">Estado *</label>

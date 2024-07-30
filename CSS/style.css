@@ -21,8 +21,9 @@ body {
     background: #DCDCDC;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 10px 10px grey;
+    box-shadow: 0 15px 15px grey;
     width: 30rem;
+    text-align: center;
 }
 
 .div-form {
@@ -44,13 +45,21 @@ body {
     margin-right: auto;
 }
 
-h1,
+h1, 
 .titulo {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
     font-family: Helvetica, sans-serif;
     color: blue;
+}
+
+.msg-os {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-family: Helvetica, sans-serif;
+    color: red;
 }
 
 .OSCriada {

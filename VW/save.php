@@ -3,6 +3,7 @@ session_start();
 header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../DB/conexaoSQL.php";
 include_once "../DB/acoes.php";
+include_once "../DB/dados.php";
 include_once "../Config.php";
 
 $estado = $_POST['estado'];
@@ -38,8 +39,10 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $numOS .= $row['numOS'];
 
 }
+
 /* Grava o histórico do primeiro status na abertura */
 gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial);
+
 ?>
 
 <!DOCTYPE html>
