@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../DB/conexaoSQL.php";
 include_once "../DB/acoes.php";
@@ -12,10 +13,15 @@ $serie = $_POST['serie'];
 $whatsapp = $_POST['whatsapp'];
 $solicitante = $_POST['solicitante'];
 $defeito = $_POST['defeito'];
+$trava =
 
-if (isset($serie)) {
+    $_SESSION['travaSes'] = $_POST['trava'];
+
+$trava = $_SESSION['travaSes'];
+
+if (isset($serie) /* && $trava == 1 */) {
     gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
-
+    $_SESSION['travaSes'] = NULL;
 } else {
     return;
 }
@@ -44,14 +50,21 @@ gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DATABIT</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        .div-form{
+            filter: blur(10px);
+        }
+    </style>
 </head>
 
 <body>
-    <form class="form-voltar" id="form-voltar" action="<?= $url ?>/inputSerie.php">
-        <img src="../img/logo.jpg" alt="logo">
-        <h1>OS <?= $numOS ?> ABERTA!</h1>
-        <button type="submit" class="submit-btn">VOLTAR</button>
-    </form>
+    <div class="div-save">
+        <form class="form-voltar" id="form-voltar" action="<?= $url ?>/inputSerie.php">
+            <!-- <img src="../img/logo.jpg" alt="logo"> -->
+            <h1>OS <b class="OSCriada"><?= $numOS ?></b> ABERTA!</h1>
+            <button onclick="window.location.reload()" type="submit" class="popup-btn">Fechar</button>
+        </form>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../JS/script.js" charset="utf-8"></script>
 </body>

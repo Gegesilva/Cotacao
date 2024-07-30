@@ -16,7 +16,7 @@ include_once "../Config.php";
     <form class="form-serie" method="get" action="<?= $url?>/index.php">
         <img src="../img/logo.jpg" alt="logo">
         <div class="form-group">
-            <div class="form-serie">
+            <div class="div-serie">
                 <label for="serie">Série *</label>
                 <input id="serie" name="serie" required></input>
             </div>

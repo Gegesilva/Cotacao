@@ -13,7 +13,7 @@ $('#form-geral').submit(function(e){
     var d_contador = $('#contador').val();
     var d_periodo = $('#periodo').val();
 
-    let resultado = document.getElementById('form-geral');
+    var resultado = document.getElementById('div-save');
 
     console.log(d_estado,d_serie,  
                 d_local, d_solitante, 
@@ -34,6 +34,8 @@ $('#form-geral').submit(function(e){
     }).done(function(retorno){
         console.log(retorno)
         resultado.innerHTML = retorno
+        $('#serie').val('');
+        $('#solicitante').val('');
     })
 })
 
