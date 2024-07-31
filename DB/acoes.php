@@ -56,7 +56,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 				FORMAT((TB02115_CODIGO + $salto), '000000')
 			FROM TB02115 
 			WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + $salto) AND TB00002_TABELA = 'TB02115') 
-            AND TB02115_CODIGO != (TB02115_CODIGO + $salto)  
+            AND TB02115_CODIGO != FORMAT((TB02115_CODIGO + $salto), '000000')
 			ORDER BY TB02115_CODIGO DESC),
            GETDATE(),
            '$estado',
@@ -94,8 +94,8 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
     $stmt = sqlsrv_query($conn, $sql);
     if($stmt === false)
     {
-      //die (print_r(sqlsrv_errors(), true));
-      print('Erro no Banco!!!');
+      die (print_r(sqlsrv_errors(), true));
+      //print('Erro OS não gravada!!!');
     }
 
 }
