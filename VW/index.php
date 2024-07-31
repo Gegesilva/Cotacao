@@ -59,7 +59,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 </div>
                 <div class="form-input">
                     <label for="whatsapp">Whatsapp * <small>(00000000000)</small></label>
-                    <input type="number" class="input-whatsapp" id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
+                    <input type="text" class="input-whatsapp" id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
                         required>
                 </div>
             </div>

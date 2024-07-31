@@ -29,7 +29,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
         TB02115_EMAIL,
         TB02115_CONTPB,
         TB02115_NUMSERIE,
-        TB02115_FONE,
+        TB02115_CELULAR,
 		TB02115_SOLICITANTE,
 		TB02115_OBS,
         TB02115_STATUS,
@@ -48,7 +48,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 		TB02115_END,
 		TB02115_CIDADE,
         TB02115_BAIRRO,
-		TB02115_CELULAR,
+		TB02115_NUM,
 		TB02115_COMP)
         (
 		SELECT 
@@ -92,6 +92,11 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
         ";
 
     $stmt = sqlsrv_query($conn, $sql);
+    if($stmt === false)
+    {
+      //die (print_r(sqlsrv_errors(), true));
+      print('Erro no Banco!!!');
+    }
 
 }
 
