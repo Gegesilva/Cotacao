@@ -3,6 +3,24 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 {
     global $statusInicial, $salto;
 
+    /* Verifica se e patrimonio ou serie antes de gravar */
+    $sql = "SELECT TOP 1 
+                TB02112_NUMSERIE NumSerie
+            FROM TB02112
+            WHERE TB02112_PAT = '$serie'
+    ";
+    $stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $NumSerie = $row['NumSerie'];
+    }
+
+    if ($NumSerie != NULL || $NumSerie != '') {
+        $serie = $NumSerie;
+    } else {
+
+    }
+
+
     $sql = "INSERT INTO TB02115( 
 		TB02115_CODIGO,
         TB02115_DTCAD,
@@ -30,7 +48,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 		TB02115_END,
 		TB02115_CIDADE,
         TB02115_BAIRRO,
-		TB02115_NUM,
+		TB02115_CELULAR,
 		TB02115_COMP)
         (
 		SELECT 
@@ -77,8 +95,26 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 
 }
 
-function gravaHistorico($conn, $numOS ,$serie, $defeito, $statusInicial){
-    $sql="UPDATE TB00002
+function gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial)
+{
+    /* Verifica se e patrimonio ou serie antes de gravar */
+    $sql = "SELECT TOP 1 
+                TB02112_NUMSERIE NumSerie
+            FROM TB02112
+            WHERE TB02112_PAT = '$serie'
+    ";
+    $stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $NumSerie = $row['NumSerie'];
+    }
+
+    if (isset($NumSerie)) {
+        $serie = $NumSerie;
+    } else {
+
+    }
+
+    $sql = "UPDATE TB00002
     SET TB00002_COD = '$numOS'
     WHERE TB00002_TABELA = 'TB02115'
     

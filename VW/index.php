@@ -34,7 +34,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                         required readonly>
                 </div>
                 <div class="form-input">
-                    <label for="serie">Série *</label>
+                    <label for="serie">Série/Pat *</label>
                     <input id="serie" name="serie" rows="4" placeholder="<?= $serie; ?>" value="<?= $serie ?>" required
                         readonly></input>
                 </div>

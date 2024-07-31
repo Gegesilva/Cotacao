@@ -14,15 +14,10 @@ $serie = $_POST['serie'];
 $whatsapp = $_POST['whatsapp'];
 $solicitante = $_POST['solicitante'];
 $defeito = $_POST['defeito'];
-$trava =
 
-    $_SESSION['travaSes'] = $_POST['trava'];
 
-$trava = $_SESSION['travaSes'];
-
-if (isset($serie) /* && $trava == 1 */) {
+if (isset($serie)) {
     gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
-    $_SESSION['travaSes'] = NULL;
 } else {
     return;
 }

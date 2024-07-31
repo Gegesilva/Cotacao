@@ -1,8 +1,8 @@
 <?php
 function preenchimento($conn, $serie)
 {
-    $sql = "SELECT TOP 1 1 existPat FROM TB02055
-        WHERE TB02055_PAT = '$serie'
+    $sql = "SELECT TOP 1 1 existPat FROM TB02112
+        WHERE TB02112_PAT = '$serie'
     ";
     $stmt = sqlsrv_query($conn, $sql);
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {

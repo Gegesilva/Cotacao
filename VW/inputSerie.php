@@ -17,7 +17,7 @@ include_once "../Config.php";
         <img src="../img/logo.jpg" alt="logo">
         <div class="form-group">
             <div class="div-serie">
-                <label for="serie">Série *</label>
+                <label for="serie">Série/Pat *</label>
                 <input id="serie" name="serie" required></input>
             </div>
         </div>
