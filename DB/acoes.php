@@ -104,8 +104,8 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 
     $stmt = sqlsrv_query($conn, $sql);
     if ($stmt === false) {
-        die(print_r(sqlsrv_errors(), true));
-        //print('Erro OS não gravada!!!');
+        //die(print_r(sqlsrv_errors(), true));
+        print('Erro OS não gravada!!!');
     }
 
 }
