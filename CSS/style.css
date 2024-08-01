@@ -17,6 +17,15 @@ body {
     width: 40rem;
 }
 
+@media screen and (max-width: 740px) {
+
+    .form-geral,
+    .form-serie {
+        width: auto;
+    }
+
+}
+
 .form-voltar {
     background: #DCDCDC;
     padding: 20px;
