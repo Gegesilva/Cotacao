@@ -1,7 +1,22 @@
 <?php
+include_once "../config.php";
+
+$sql = "SELECT TOP 1 
+                FORMAT((TB02115_CODIGO + $salto), '000000') novaOS
+            FROM TB02115 
+            WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + $salto) AND TB00002_TABELA = 'TB02115') 
+            AND TB02115_CODIGO != FORMAT((TB02115_CODIGO + $salto), '000000')
+            ORDER BY TB02115_CODIGO DESC
+    ";
+$stmt = sqlsrv_query($conn, $sql);
+while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+    $novaOS = $row['novaOS'];
+}
+
+//$novaOS = 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
 function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito)
 {
-    global $statusInicial, $salto;
+    global $statusInicial, $novaOS;
 
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 
@@ -19,7 +34,6 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
     } else {
 
     }
-
 
     $sql = "INSERT INTO TB02115( 
 		TB02115_CODIGO,
@@ -51,13 +65,8 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 		TB02115_NUM,
 		TB02115_COMP)
         (
-		SELECT 
-            (SELECT TOP 1 
-				FORMAT((TB02115_CODIGO + $salto), '000000')
-			FROM TB02115 
-			WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + $salto) AND TB00002_TABELA = 'TB02115') 
-            AND TB02115_CODIGO != FORMAT((TB02115_CODIGO + $salto), '000000')
-			ORDER BY TB02115_CODIGO DESC),
+		SELECT TOP 1
+           '$novaOS',
            GETDATE(),
            '$estado',
            '$local', 
@@ -88,14 +97,14 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
         FROM TB02112
         LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
         WHERE TB02112_NUMSERIE = '$serie'
+        AND TB02112_SITUACAO = 'A'
                 )
         ";
 
     $stmt = sqlsrv_query($conn, $sql);
-    if($stmt === false)
-    {
-      die (print_r(sqlsrv_errors(), true));
-      //print('Erro OS não gravada!!!');
+    if ($stmt === false) {
+        die(print_r(sqlsrv_errors(), true));
+        //print('Erro OS não gravada!!!');
     }
 
 }
@@ -122,8 +131,6 @@ function gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial)
     $sql = "UPDATE TB00002
     SET TB00002_COD = '$numOS'
     WHERE TB00002_TABELA = 'TB02115'
-    
-    
     
     INSERT INTO TB02130
             (TB02130_CODIGO,

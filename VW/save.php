@@ -18,9 +18,7 @@ $defeito = $_POST['defeito'];
 
 if (isset($serie)) {
     gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
-} else {
-    return;
-}
+
 
 /* Pega o ultimo numero de OS aberto */
 $sql = "SELECT TOP 1 
@@ -98,3 +96,8 @@ gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial);
 </body>
 
 </html>
+<?php
+    } else {
+        return;
+    }
+?>

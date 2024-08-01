@@ -48,7 +48,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 <div class="form-input">
                     <label for="local">Local*</label>
                     <input type="text" id="local" name="local" placeholder="<?= $Local; ?>" value="<?= $Local; ?>"
-                        required readonly>
+                        required>
                 </div>
             </div>
             <div class="form-group">
@@ -98,6 +98,11 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                     type="submit" class="voltar-btn-form">Voltar</button>
             </div>
         </form>
+        <?php
+           /* gera um codigo de 6 numeros pseudo aleatorio */
+
+            echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
+        ?>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../JS/script.js" charset="utf-8"></script>
