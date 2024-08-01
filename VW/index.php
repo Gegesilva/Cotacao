@@ -101,7 +101,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         <?php
            /* gera um codigo de 6 numeros pseudo aleatorio */
 
-            echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
+            //echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
         ?>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

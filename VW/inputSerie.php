@@ -1,4 +1,4 @@
-<?php 
+<?php
 header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../Config.php";
 ?>
@@ -13,7 +13,7 @@ include_once "../Config.php";
 </head>
 
 <body>
-    <form class="form-serie" method="get" action="<?= $url?>/index.php">
+    <form class="form-serie" method="get" action="<?= $url ?>/index.php">
         <img src="../img/logo.jpg" alt="logo">
         <div class="form-group">
             <div class="div-serie">

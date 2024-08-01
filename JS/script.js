@@ -1,5 +1,4 @@
-
-$('#form-geral').submit(function(e){
+$('#form-geral').submit(function (e) {
     e.preventDefault();
 
     var d_estado = $('#estado').val();
@@ -24,18 +23,23 @@ $('#form-geral').submit(function(e){
     $.ajax({
         url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/save.php',
         method: 'POST',
-        data: {estado: d_estado, 
-            serie: d_serie, cliente: d_cliente, 
-            local: d_local, solicitante: d_solitante, 
-            whatsapp: d_whatsapp, email: d_email, 
-            defeito: d_defeito, contador: d_contador, 
-            periodo: d_periodo},
+        data: {
+            estado: d_estado,
+            serie: d_serie,
+            cliente: d_cliente,
+            local: d_local,
+            solicitante: d_solitante,
+            whatsapp: d_whatsapp,
+            email: d_email,
+            defeito: d_defeito,
+            contador: d_contador,
+            periodo: d_periodo
+        },
         /* dataType: 'json' */
-    }).done(function(retorno){
+    }).done(function (retorno) {
         /* console.log(retorno) */
         resultado.innerHTML = retorno
         $('#serie').val('');
         $('#solicitante').val('');
     })
 })
-
