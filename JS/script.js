@@ -15,11 +15,11 @@ $('#form-geral').submit(function(e){
 
     var resultado = document.getElementById('div-save');
 
-    console.log(d_estado,d_serie,  
+    /* console.log(d_estado,d_serie,  
                 d_local, d_solitante, 
                 d_whatsapp, d_email, 
                 d_defeito, d_contador, 
-                d_periodo,d_cliente)
+                d_periodo,d_cliente) */
 
     $.ajax({
         url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/save.php',
@@ -32,7 +32,7 @@ $('#form-geral').submit(function(e){
             periodo: d_periodo},
         /* dataType: 'json' */
     }).done(function(retorno){
-        console.log(retorno)
+        /* console.log(retorno) */
         resultado.innerHTML = retorno
         $('#serie').val('');
         $('#solicitante').val('');

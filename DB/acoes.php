@@ -23,6 +23,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
                 TB02112_NUMSERIE NumSerie
             FROM TB02112
             WHERE TB02112_PAT = '$serie'
+            AND TB02112_SITUACAO = 'A'
     ";
     $stmt = sqlsrv_query($conn, $sql);
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
@@ -116,6 +117,7 @@ function gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial)
                 TB02112_NUMSERIE NumSerie
             FROM TB02112
             WHERE TB02112_PAT = '$serie'
+            AND TB02112_SITUACAO = 'A'
     ";
     $stmt = sqlsrv_query($conn, $sql);
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
