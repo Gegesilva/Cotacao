@@ -14,7 +14,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 }
 
 //$novaOS = 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
-function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito)
+function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito, $periodo)
 {
     global $statusInicial, $novaOS;
 
@@ -76,7 +76,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
            '$serie', 
            '$whatsapp',
            '$solicitante',
-           '$defeito',
+           '$defeito - Periodo para atendimento: $periodo',
            '$statusInicial',
            'APP ABERTURA_OS',
 		   TB02112_CODIGO,

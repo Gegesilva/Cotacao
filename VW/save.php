@@ -14,10 +14,11 @@ $serie = $_POST['serie'];
 $whatsapp = $_POST['whatsapp'];
 $solicitante = $_POST['solicitante'];
 $defeito = $_POST['defeito'];
+$periodo = $_POST['periodo'];
 
 
 if (isset($serie)) {
-    gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito);
+    gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito, $periodo);
 
 
     /* Pega o ultimo numero de OS aberto */
