@@ -1,6 +1,22 @@
 <?php
 function preenchimento($conn, $serie)
 {
+    $sql = "SELECT TOP 1 1 existPat FROM TB02112
+        WHERE TB02112_PAT = '$serie'
+    ";
+    $stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $existPat .= $row['existPat'];
+    }
+
+    if($existPat == '1'){
+        $filtroPatSerie = "TB02112_PAT = '$serie'";
+    }else{
+        $filtroPatSerie = "TB02112_NUMSERIE = '$serie'";
+    }
+
+
+
     $sql = "SELECT 
                 TB02112_ESTADO Estado,
                 TB01008_NOME Cliente,
@@ -14,7 +30,7 @@ function preenchimento($conn, $serie)
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
             LEFT JOIN TB01008 ON TB01008_CODIGO = TB02111_CODCLI
 
-            WHERE TB02112_NUMSERIE = '$serie'
+            WHERE $filtroPatSerie
     ";
     $stmt = sqlsrv_query($conn, $sql);
 
@@ -53,8 +69,8 @@ function PegaTipo($conn, $serie)
     ";
     $stmt = sqlsrv_query($conn, $sql);
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        $Tipo .= 'Já existe uma OS em aberto do tipo ' . $row['Tipo'] . ' para esse numero de série.';
+        $Tipo .= 'Já existe uma OS em aberto do tipo '.$row['Tipo'].' para esse numero de série.';
     }
 
-    echo $Tipo;
+     echo $Tipo;
 }

@@ -18,7 +18,7 @@ include_once "../Config.php";
         <div class="form-group">
             <div class="div-serie">
                 <label for="serie">Série/Pat *</label>
-                <input id="serie" name="serie" required></input>
+                <input id="serie" name="serie" autofocus required></input>
             </div>
         </div>
         <button type="submit" class="submit-btn">OK</button>
