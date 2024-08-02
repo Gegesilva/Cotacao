@@ -51,6 +51,19 @@ function preenchimento($conn, $serie)
 
 function PegaTipo($conn, $serie)
 {
+    $sql = "SELECT TOP 1 TB02112_NUMSERIE numSerie FROM TB02112
+        WHERE TB02112_PAT = '$serie'
+    ";
+    $stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $numSerie .= $row['numSerie'];
+    }
+
+    if (isset($numSerie)) {
+        $serie = $numSerie;
+    }
+
+
     $sql = "SELECT TOP 1
                 CASE 
                     WHEN TB02115_PREVENTIVA = 'N' THEN 'NORMAL'
@@ -99,8 +112,8 @@ function indentificaProd($conn, $serie)
 ";
     $stmt = sqlsrv_query($conn, $sql);
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        $existProd = $row['existProd'] ;
+        $existProd = $row['existProd'];
     }
 
-   return $existProd;
+    return $existProd;
 }

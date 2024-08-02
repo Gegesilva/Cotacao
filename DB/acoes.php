@@ -18,8 +18,20 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 {
     global $statusInicial, $novaOS;
 
-    /* Trata o numero de caracteres que será inserido no compo TB02112_NOME */
+    /* Trata o numero de caracteres que será inserido no compo TB02115_NOME */
     $motivo = substr($defeito, 0, 50);
+
+    /* Trata o numero de caracteres que será inserido no compo TB02115_CELULAR */
+    $whatsapp = substr($whatsapp, 0, 11);
+
+    /* Trata o numero de caracteres que será inserido no compo TB02115_LOCAL */
+    $local = substr($local, 0, 200);
+
+    /* Trata o numero de caracteres que será inserido no compo TB02115_EMAIL */
+    $email = substr($email, 0, 200);
+
+    /* Trata o numero de caracteres que será inserido no compo TB02115_SOLICITANTE */
+    $solicitante = substr($solicitante, 0, 30);
 
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 
@@ -109,8 +121,8 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 
     $stmt = sqlsrv_query($conn, $sql);
     if ($stmt === false) {
-        die(print_r(sqlsrv_errors(), true));
-        //print ('Erro OS não gravada!!!');
+        //die(print_r(sqlsrv_errors(), true));
+        print ('Erro OS não gravada!!!');
     }
 
 }
