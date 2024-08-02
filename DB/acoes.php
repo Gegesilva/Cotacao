@@ -105,7 +105,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 		   'I',
 		   TB02112_PRODUTO,
 		   '0000',
-		   '$solicitante',
+		   'PortalQR',
 		   'N',
 		   GETDATE(),
 		   'A',
