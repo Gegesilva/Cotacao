@@ -88,7 +88,9 @@ if (isset($serie)) {
         <div class="div-save">
             <form class="form-voltar" id="form-voltar" action="<?= $url ?>/inputSerie.php">
                 <!-- <img src="../img/logo.jpg" alt="logo"> -->
-                <h1>OS <b class="OSCriada"><?= $numOS ?></b></h1>
+                <p class="OSCriadaTx">Sua OS foi aberta com sucesso!</p>
+                <p class="OSCriadaTx">Abaixo numero para acompanhamento:</p>
+                <h1><b class="OSCriada"><?= $numOS ?></b></h1>
                 <button onclick="window.location.reload()" type="submit" class="popup-btn">Fechar</button>
             </form>
         </div>

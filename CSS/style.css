@@ -35,7 +35,7 @@ body {
     text-align: center;
 }
 
-.input-whatsapp::-webkit-inner-spin-button {
+.input-contador::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
@@ -81,6 +81,9 @@ h1,
 
 .OSCriada {
     color: red;
+}
+.OSCriadaTx{
+    color: blue;
 }
 
 img {

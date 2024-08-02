@@ -18,7 +18,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 {
     global $statusInicial, $novaOS;
 
-    $motivo = substr($defeito, 1, 50);
+    $motivo = substr($defeito, 0, 50);
 
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 

@@ -65,7 +65,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 </div>
                 <div class="form-input">
                     <label for="whatsapp">Whatsapp * <small>(00000000000)</small></label>
-                    <input type="text" class="input-whatsapp" id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
+                    <input type="text"  id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
                         required>
                 </div>
             </div>
@@ -85,8 +85,8 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
             <div class="form-group">
                 <div class="form-input">
                     <label for="contador">Último Contador</label>
-                    <input type="text" id="contador" name="contador" placeholder="<?= $UltCont; ?>"
-                        value="<?= $UltCont; ?>" readonly>
+                    <input class="input-contador" type="number" id="contador" name="contador" placeholder="<?= $UltCont; ?>"
+                        value="<?= $UltCont; ?>" required>
                 </div>
                 <div class="form-input">
                     <label for="periodo">Período</label>

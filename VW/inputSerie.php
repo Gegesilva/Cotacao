@@ -4,7 +4,7 @@ include_once "../Config.php";
 
 $ret = $_GET['ret'];
 if($ret == '1'){
-    $msgErr = 'Serie/Patrimônio inexistente!';
+    $msgErr = 'Série ou patrimônio inexistente!';
 }else{
     $msgErr = '';
 }
