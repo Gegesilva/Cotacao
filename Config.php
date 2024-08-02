@@ -8,4 +8,4 @@ $usuarioBanco = 'sa';
 $SenhaBanco = 'databit@2022';
 
 $statusInicial = '07';
-$salto = 1; /* Esta variavel defini o acrescimo que será feito ao ultimo numero de OS para que seja gerado o proximo */
+$salto = 1; /* Esta variavel define o acrescimo que será feito ao ultimo numero de OS para que seja gerado o proximo */

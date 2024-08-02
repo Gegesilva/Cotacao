@@ -1,6 +1,7 @@
 <?php
 include_once "../config.php";
 
+/* Gera o proximo numero de OS */
 $sql = "SELECT TOP 1 
                 FORMAT((TB02115_CODIGO + $salto), '000000') novaOS
             FROM TB02115 
@@ -13,7 +14,6 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $novaOS = $row['novaOS'];
 }
 
-//$novaOS = 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
 function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $solicitante, $defeito, $periodo)
 {
     global $statusInicial, $novaOS;
