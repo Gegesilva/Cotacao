@@ -18,6 +18,8 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 {
     global $statusInicial, $novaOS;
 
+    $motivo = substr($defeito, 1, 50);
+
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 
                 TB02112_NUMSERIE NumSerie
@@ -48,6 +50,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 		TB02115_SOLICITANTE,
 		TB02115_OBS,
         TB02115_STATUS,
+        TB02115_NOME,
         TB02115_OPCAD,
 		TB02115_CONTRATO,
         TB02115_CODEMP,
@@ -78,6 +81,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
            '$solicitante',
            '$defeito - Periodo para atendimento: $periodo',
            '$statusInicial',
+           '$motivo',
            'APP ABERTURA_OS',
 		   TB02112_CODIGO,
 		   TB02111_CODEMP,
