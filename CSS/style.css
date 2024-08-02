@@ -66,6 +66,10 @@ h1,
     font-family: Helvetica, sans-serif;
     color: blue;
 }
+.retErro{
+    color: red;
+    font-size: small;
+}
 
 .msg-os {
     text-align: center;

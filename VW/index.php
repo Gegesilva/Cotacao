@@ -7,6 +7,12 @@ include_once "../Config.php";
 $serie = $_GET["serie"];
 
 list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento($conn, $serie);
+
+
+ if(indentificaProd($conn, $serie) != '1'){
+    header("Location: ../VW/inputSerie.php?ret=1");
+    return;
+ }
 ?>
 
 <!DOCTYPE html>
