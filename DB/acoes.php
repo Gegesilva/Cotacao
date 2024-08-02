@@ -18,6 +18,7 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 {
     global $statusInicial, $novaOS;
 
+    /* Trata o numero de caracteres que será inserido no compo TB02112_NOME */
     $motivo = substr($defeito, 0, 50);
 
     /* Verifica se e patrimonio ou serie antes de gravar */
