@@ -18,20 +18,23 @@ function gravaOS($conn, $estado, $local, $email, $contpb, $serie, $whatsapp, $so
 {
     global $statusInicial, $novaOS;
 
-    /* Trata o numero de caracteres que será inserido no compo TB02115_NOME */
+    /* Trata o numero de caracteres que será inserido no campo TB02115_NOME */
     $motivo = substr($defeito, 0, 50);
 
-    /* Trata o numero de caracteres que será inserido no compo TB02115_CELULAR */
+    /* Trata o numero de caracteres que será inserido no campo TB02115_CELULAR */
     $whatsapp = substr($whatsapp, 0, 11);
 
-    /* Trata o numero de caracteres que será inserido no compo TB02115_LOCAL */
+    /* Trata o numero de caracteres que será inserido no campo TB02115_LOCAL */
     $local = substr($local, 0, 200);
 
-    /* Trata o numero de caracteres que será inserido no compo TB02115_EMAIL */
+    /* Trata o numero de caracteres que será inserido no campo TB02115_EMAIL */
     $email = substr($email, 0, 200);
 
-    /* Trata o numero de caracteres que será inserido no compo TB02115_SOLICITANTE */
+    /* Trata o numero de caracteres que será inserido no campo TB02115_SOLICITANTE */
     $solicitante = substr($solicitante, 0, 30);
+
+    /* Trata o numero de caracteres que será inserido no campo TB02115_SOLICITANTE */
+    $contpb = substr($contpb, 0, 10);
 
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 
