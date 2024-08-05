@@ -13,6 +13,8 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
     header("Location: ../VW/inputSerie.php?ret=1");
     return;
  }
+
+ echo $ultContGer;
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                     type="submit" class="voltar-btn-form"> < </button>
             </div>
             <h1 class="titulos">SOLICITAÇÃO DE SUPRIMENTO</h1>
-            <h6 class="msg-os"><?= PegaTipo($conn, $serie)?></h6>
+            <h6 class="msg-os"><? /* PegaTipo($conn, $serie) */?></h6>
             <div class="form-group">
                 <div class="form-input">
                     <label for="estado">Estado *</label>
@@ -120,7 +122,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
             <div class="form-group">
                 <div class="form-input">
                     <label for="contador">Último Contador</label>
-                    <input class="input-contador" type="number" id="contador" name="contador" placeholder="<?= $UltCont; ?>"
+                    <input class="input-contador" type="number" id="ultcont" name="ultcont" placeholder="<?= $UltCont; ?>"
                         value="<?= $UltCont; ?>" required>
                 </div>
                 <div class="form-input">

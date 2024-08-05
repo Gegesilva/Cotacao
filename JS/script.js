@@ -44,6 +44,8 @@ $('#form-geral').submit(function (e) {
     })
 })
 
+
+
 $('#form-geral-req').submit(function (e) {
     e.preventDefault();
 
@@ -55,7 +57,7 @@ $('#form-geral-req').submit(function (e) {
     var d_whatsapp = $('#whatsapp').val();
     var d_email = $('#e-mail').val();
     var d_defeito = $('#defeito').val();
-    var d_contador = $('#contador').val();
+    var d_ultcont = $('#ultcont').val();
     var d_periodo = $('#periodo').val();
     var d_tonerPB = $('#tonerPB').val();
     var d_preto = $('#preto').val();
@@ -69,7 +71,7 @@ $('#form-geral-req').submit(function (e) {
     console.log(d_estado,d_serie,  
                 d_local, d_solitante, 
                 d_whatsapp, d_email, 
-                d_defeito, d_contador, 
+                d_defeito, d_ultcont, 
                 d_periodo,d_cliente,
                 d_preto, d_magenta)
 
@@ -85,7 +87,7 @@ $('#form-geral-req').submit(function (e) {
             whatsapp: d_whatsapp,
             email: d_email,
             defeito: d_defeito,
-            contador: d_contador,
+            ultcont: d_ultcont,
             periodo: d_periodo,
             tonerPB: d_tonerPB,
             preto: d_preto,
