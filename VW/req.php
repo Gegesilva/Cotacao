@@ -28,7 +28,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
 <body>
     <div class="div-save" id="div-save"></div>
     <div class="div-form">
-        <form method="POST" class="form-geral" id="form-geral">
+        <form method="POST" class="form-geral" id="form-geral-req">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
                 <h7 class="h7-nome-btn">Abertura chamado tec.</h7><button class="btn-req" onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';"
@@ -80,34 +80,34 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Toner PB</label>
-                    <input class="input-contador" type="number" id="TonerPB" name="TonerPB" placeholder="0" value=""
+                    <input class="input-contador" type="number" id="tonerPB" name="tonerPB" placeholder="0" 
                         required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-input">
                     <label for="e-mail">Preto</label>
-                    <input class="input-contador" type="number" id="preto" name="preto" placeholder="0" value=""
+                    <input class="input-contador" type="number" id="preto" name="preto" placeholder="0" 
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Azul</label>
-                    <input class="input-contador" type="number" id="azul" name="azul" placeholder="0" value=""
+                    <input class="input-contador" type="number" id="azul" name="azul" placeholder="0" 
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Amarelo</label>
-                    <input class="input-contador" type="number" id="amarelo" name="amarelo" placeholder="0" value=""
+                    <input class="input-contador" type="number" id="amarelo" name="amarelo" placeholder="0" 
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Magenta</label>
-                    <input class="input-contador" type="number" id="magenta" name="magenta" placeholder="0" value=""
+                    <input class="input-contador" type="number" id="magenta" name="magenta" placeholder="0" 
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Outro</label>
-                    <input class="input-contador" type="number" id="outro" name="outro" placeholder="0" value=""
+                    <input class="input-contador" type="number" id="outro" name="outro" placeholder="0" 
                         required>
                 </div>
             </div>
