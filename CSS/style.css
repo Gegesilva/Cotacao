@@ -244,6 +244,13 @@ img {
     opacity: 10;
     font-size: small;
 }
+.label-text-toner{
+    margin-bottom: 10px;
+    color: blue;
+}
+
+
+
 
 .btn-req {
     min-width: 30px;

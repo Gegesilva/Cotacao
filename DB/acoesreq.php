@@ -17,6 +17,24 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
 {
     global $ultContGer;
 
+    /* Verifica se e patrimonio ou serie antes de gravar */
+    $sql = "SELECT TOP 1 
+                TB02112_NUMSERIE NumSerie
+            FROM TB02112
+            WHERE TB02112_PAT = '$serie'
+            AND TB02112_SITUACAO = 'A'
+    ";
+    $stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $NumSerie = $row['NumSerie'];
+    }
+
+    if ($NumSerie != NULL || $NumSerie != '') {
+        $serie = $NumSerie;
+    } else {
+
+    }
+
     $sql = "INSERT INTO TB02018(
                 TB02018_CODIGO,
                 TB02018_DTCAD,
@@ -36,7 +54,8 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02018_EMAIL,
                 TB02018_CODSITE,
                 TB02018_NUMSERIE,
-                TB02018_OBS)
+                TB02018_OBS,
+                TB02018_CONTTOTAL)
             (SELECT 
                 '$ultContGer',
                 GETDATE(),
@@ -56,7 +75,8 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02111_EMAIL,
                 TB02112_CODSITE,
                 '$serie',
-                'Local ou setor: $local - Melhor periodo para visita: $periodo \nTonerPB: $tonerPB, \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro'
+                'Melhor periodo para visita: $periodo \nLocal ou setor: $local \nTonerPB: $tonerPB, \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro',
+                '$ultcont'
                  
             FROM TB02112
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO

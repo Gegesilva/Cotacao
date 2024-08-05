@@ -9,12 +9,12 @@ $serie = $_GET["serie"];
 list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento($conn, $serie);
 
 
- if(indentificaProd($conn, $serie) != '1'){
+if (indentificaProd($conn, $serie) != '1') {
     header("Location: ../VW/inputSerie.php?ret=1");
     return;
- }
+}
 
- echo $ultContGer;
+echo $ultContGer;
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +33,13 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
         <form method="POST" class="form-geral" id="form-geral-req">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
-                <h7 class="h7-nome-btn">Abertura chamado tec.</h7><button class="btn-req" onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';"
-                    type="submit" class="voltar-btn-form"> < </button>
+                <h7 class="h7-nome-btn">Abertura chamado tec.</h7><button class="btn-req"
+                    onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';" type="submit"
+                    class="voltar-btn-form">
+                    < </button>
             </div>
             <h1 class="titulos">SOLICITAÇÃO DE SUPRIMENTO</h1>
-            <h6 class="msg-os"><? /* PegaTipo($conn, $serie) */?></h6>
+            <h6 class="msg-os"><? /* PegaTipo($conn, $serie) */ ?></h6>
             <div class="form-group">
                 <div class="form-input">
                     <label for="estado">Estado *</label>
@@ -70,7 +72,7 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 </div>
                 <div class="form-input">
                     <label for="whatsapp">Whatsapp * <small>(00000000000)</small></label>
-                    <input type="text"  id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
+                    <input type="text" id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
                         required>
                 </div>
             </div>
@@ -82,35 +84,32 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Toner PB</label>
-                    <input  type="number" id="tonerPB" name="tonerPB" placeholder="0" value="0"
-                        required>
+                    <input type="number" id="tonerPB" name="tonerPB" placeholder="0" value="0" required>
                 </div>
+            </div>
+            <div class="label-text-toner">
+                <label>Toner colorido:</label>
             </div>
             <div class="form-group">
                 <div class="form-input">
                     <label for="e-mail">Preto</label>
-                    <input  type="number" id="preto" name="preto" placeholder="0" value="0"
-                        required>
+                    <input type="number" id="preto" name="preto" placeholder="0" value="0" required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Azul</label>
-                    <input  type="number" id="azul" name="azul" placeholder="0" value="0"
-                        required>
+                    <input type="number" id="azul" name="azul" placeholder="0" value="0" required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Amarelo</label>
-                    <input  type="number" id="amarelo" name="amarelo" placeholder="0" value="0"
-                        required>
+                    <input type="number" id="amarelo" name="amarelo" placeholder="0" value="0" required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Magenta</label>
-                    <input  type="number" id="magenta" name="magenta" placeholder="0" value="0"
-                        required>
+                    <input type="number" id="magenta" name="magenta" placeholder="0" value="0" required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Outro</label>
-                    <input  type="number" id="outro" name="outro" placeholder="0" value="0"
-                        required>
+                    <input type="number" id="outro" name="outro" placeholder="0" value="0" required>
                 </div>
             </div>
             <div class="form-group">
@@ -122,8 +121,8 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
             <div class="form-group">
                 <div class="form-input">
                     <label for="contador">Último Contador</label>
-                    <input class="input-contador" type="number" id="ultcont" name="ultcont" placeholder="<?= $UltCont; ?>"
-                        value="<?= $UltCont; ?>" required>
+                    <input class="input-contador" type="number" id="ultcont" name="ultcont"
+                        placeholder="<?= $UltCont; ?>" value="<?= $UltCont; ?>" required>
                 </div>
                 <div class="form-input">
                     <label for="periodo">Período</label>
@@ -137,14 +136,14 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
             <div class="btn-index">
                 <input type="hidden" name="trava" id="trava" value="1">
                 <button type="submit" class="submit-btn">Enviar</button>
-                <!-- <button onClick="window.location='<??>/inputSerie.php';"
+                <!-- <button onClick="window.location='<? ?>/inputSerie.php';"
                     type="submit" class="voltar-btn-form">Voltar</button> -->
             </div>
         </form>
         <?php
-           /* gera um codigo de 6 numeros pseudo aleatorio */
+        /* gera um codigo de 6 numeros pseudo aleatorio */
 
-            //echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
+        //echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
         ?>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
