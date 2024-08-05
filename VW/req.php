@@ -82,34 +82,34 @@ list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento(
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Toner PB</label>
-                    <input class="input-contador" type="number" id="tonerPB" name="tonerPB" placeholder="0" 
+                    <input  type="number" id="tonerPB" name="tonerPB" placeholder="0" value="0"
                         required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-input">
                     <label for="e-mail">Preto</label>
-                    <input class="input-contador" type="number" id="preto" name="preto" placeholder="0" 
+                    <input  type="number" id="preto" name="preto" placeholder="0" value="0"
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Azul</label>
-                    <input class="input-contador" type="number" id="azul" name="azul" placeholder="0" 
+                    <input  type="number" id="azul" name="azul" placeholder="0" value="0"
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Amarelo</label>
-                    <input class="input-contador" type="number" id="amarelo" name="amarelo" placeholder="0" 
+                    <input  type="number" id="amarelo" name="amarelo" placeholder="0" value="0"
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Magenta</label>
-                    <input class="input-contador" type="number" id="magenta" name="magenta" placeholder="0" 
+                    <input  type="number" id="magenta" name="magenta" placeholder="0" value="0"
                         required>
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Outro</label>
-                    <input class="input-contador" type="number" id="outro" name="outro" placeholder="0" 
+                    <input  type="number" id="outro" name="outro" placeholder="0" value="0"
                         required>
                 </div>
             </div>

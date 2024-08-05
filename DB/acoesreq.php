@@ -56,7 +56,7 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02111_EMAIL,
                 TB02112_CODSITE,
                 '$serie',
-                'Local ou setor: $local - Melhor periodo para visita: $periodo \n TonerPB: $tonerPB, \n Preto: $preto, \n Azul: $azul, \n Amarelo: $amarelo, \n Magenta: $magenta, \n Outro: $outro'
+                'Local ou setor: $local - Melhor periodo para visita: $periodo \nTonerPB: $tonerPB, \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro'
                  
             FROM TB02112
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
