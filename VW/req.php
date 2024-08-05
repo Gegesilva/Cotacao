@@ -84,7 +84,7 @@ echo $ultContGer;
                 </div>
                 <div class="form-input">
                     <label for="e-mail">Toner PB</label>
-                    <input type="number" id="tonerPB" name="tonerPB" placeholder="0" value="0" required>
+                    <input type="number" id="tonerPB" name="tonerPB" value="0" required>
                 </div>
             </div>
             <div class="label-text-toner">
@@ -92,24 +92,24 @@ echo $ultContGer;
             </div>
             <div class="form-group">
                 <div class="form-input">
-                    <label for="e-mail">Preto</label>
-                    <input type="number" id="preto" name="preto" placeholder="0" value="0" required>
+                    <label for="preto">Preto</label>
+                    <input type="number" id="preto" name="preto" value="0" required>
                 </div>
                 <div class="form-input">
-                    <label for="e-mail">Azul</label>
-                    <input type="number" id="azul" name="azul" placeholder="0" value="0" required>
+                    <label for="azul">Azul</label>
+                    <input type="number" id="azul" name="azul" value="0" required>
                 </div>
                 <div class="form-input">
-                    <label for="e-mail">Amarelo</label>
-                    <input type="number" id="amarelo" name="amarelo" placeholder="0" value="0" required>
+                    <label for="amarelo">Amarelo</label>
+                    <input type="number" id="amarelo" name="amarelo" value="0" required>
                 </div>
                 <div class="form-input">
-                    <label for="e-mail">Magenta</label>
-                    <input type="number" id="magenta" name="magenta" placeholder="0" value="0" required>
+                    <label for="magenta">Magenta</label>
+                    <input type="number" id="magenta" name="magenta" value="0" required>
                 </div>
                 <div class="form-input">
-                    <label for="e-mail">Outro</label>
-                    <input type="number" id="outro" name="outro" placeholder="0" value="0" required>
+                    <label for="outro">Outro</label>
+                    <input type="number" id="outro" name="outro" value="0" required>
                 </div>
             </div>
             <div class="form-group">

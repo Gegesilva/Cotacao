@@ -75,7 +75,7 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02111_EMAIL,
                 TB02112_CODSITE,
                 '$serie',
-                'Melhor periodo para visita: $periodo \nLocal ou setor: $local \nTonerPB: $tonerPB, \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro',
+                'Melhor periodo para visita: $periodo \nLocal ou setor: $local \nTonerPB: $tonerPB \n\nTONER COLORIDO \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro',
                 '$ultcont'
                  
             FROM TB02112
