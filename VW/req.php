@@ -9,10 +9,10 @@ $serie = $_GET["serie"];
 list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento($conn, $serie);
 
 
-if (indentificaProd($conn, $serie) != '1') {
+ if(indentificaProd($conn, $serie) != '1'){
     header("Location: ../VW/inputSerie.php?ret=1");
     return;
-}
+ }
 ?>
 
 <!DOCTYPE html>
@@ -26,17 +26,16 @@ if (indentificaProd($conn, $serie) != '1') {
 </head>
 
 <body>
-    <!--  <form method="POST" class="form-geral" action="<?= $url ?>/save.php"> -->
     <div class="div-save" id="div-save"></div>
     <div class="div-form">
         <form method="POST" class="form-geral" id="form-geral">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
-                <h7 class="h7-nome-btn">Solicitação de suprimentos</h7><button class="btn-req" onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';"
-                    type="submit" class="voltar-btn-form"> > </button>
+                <h7 class="h7-nome-btn">Abertura chamado tec.</h7><button class="btn-req" onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';"
+                    type="submit" class="voltar-btn-form"> < </button>
             </div>
-            <h1 class="titulos">ABERTURA CHAMADO TEC</h1>
-            <h6 class="msg-os"><?= PegaTipo($conn, $serie) ?></h6>
+            <h1 class="titulos">SOLICITAÇÃO DE SUPRIMENTO</h1>
+            <h6 class="msg-os"><?= PegaTipo($conn, $serie)?></h6>
             <div class="form-group">
                 <div class="form-input">
                     <label for="estado">Estado *</label>
@@ -69,7 +68,7 @@ if (indentificaProd($conn, $serie) != '1') {
                 </div>
                 <div class="form-input">
                     <label for="whatsapp">Whatsapp * <small>(00000000000)</small></label>
-                    <input type="text" id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
+                    <input type="text"  id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
                         required>
                 </div>
             </div>
@@ -79,18 +78,50 @@ if (indentificaProd($conn, $serie) != '1') {
                     <input type="text" id="e-mail" name="e-mail" placeholder="<?= $Email; ?>" value="<?= $Email; ?>"
                         required>
                 </div>
+                <div class="form-input">
+                    <label for="e-mail">Toner PB</label>
+                    <input class="input-contador" type="number" id="TonerPB" name="TonerPB" placeholder="0" value=""
+                        required>
+                </div>
             </div>
             <div class="form-group">
                 <div class="form-input">
-                    <label for="defeito">Defeito Apresentado *</label>
+                    <label for="e-mail">Preto</label>
+                    <input class="input-contador" type="number" id="preto" name="preto" placeholder="0" value=""
+                        required>
+                </div>
+                <div class="form-input">
+                    <label for="e-mail">Azul</label>
+                    <input class="input-contador" type="number" id="azul" name="azul" placeholder="0" value=""
+                        required>
+                </div>
+                <div class="form-input">
+                    <label for="e-mail">Amarelo</label>
+                    <input class="input-contador" type="number" id="amarelo" name="amarelo" placeholder="0" value=""
+                        required>
+                </div>
+                <div class="form-input">
+                    <label for="e-mail">Magenta</label>
+                    <input class="input-contador" type="number" id="magenta" name="magenta" placeholder="0" value=""
+                        required>
+                </div>
+                <div class="form-input">
+                    <label for="e-mail">Outro</label>
+                    <input class="input-contador" type="number" id="outro" name="outro" placeholder="0" value=""
+                        required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-input">
+                    <label for="defeito">Observação*</label>
                     <textarea id="defeito" name="defeito" rows="4" required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-input">
                     <label for="contador">Último Contador</label>
-                    <input class="input-contador" type="number" id="contador" name="contador"
-                        placeholder="<?= $UltCont; ?>" value="<?= $UltCont; ?>" required>
+                    <input class="input-contador" type="number" id="contador" name="contador" placeholder="<?= $UltCont; ?>"
+                        value="<?= $UltCont; ?>" required>
                 </div>
                 <div class="form-input">
                     <label for="periodo">Período</label>
@@ -103,15 +134,15 @@ if (indentificaProd($conn, $serie) != '1') {
             </div>
             <div class="btn-index">
                 <input type="hidden" name="trava" id="trava" value="1">
-                <button type="submit" class="submit-btn">Enviar OS</button>
-                <button onClick="window.location='<?= $url ?>/inputSerie.php';" type="submit"
-                    class="voltar-btn-form">Voltar</button>
+                <button type="submit" class="submit-btn">Enviar</button>
+                <!-- <button onClick="window.location='<??>/inputSerie.php';"
+                    type="submit" class="voltar-btn-form">Voltar</button> -->
             </div>
         </form>
         <?php
-        /* gera um codigo de 6 numeros pseudo aleatorio */
+           /* gera um codigo de 6 numeros pseudo aleatorio */
 
-        //echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
+            //echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
         ?>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
