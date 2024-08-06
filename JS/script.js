@@ -106,10 +106,8 @@ $('#form-geral-req').submit(function (e) {
     })
 })
 
+/* Impede o submit dos botões de troca de tela */
 const btn = document.querySelector("#btn-req");
-btn.addEventListener("click", function(e) {
-    
-  e.preventDefault();
-  
- /*  console.log("teste func"); */
+btn.addEventListener("click", function (e) {
+    e.preventDefault();
 });

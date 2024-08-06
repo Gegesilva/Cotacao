@@ -18,6 +18,21 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
 {
     global $ultContGer, $CodVendedor, $Operacao, $Condicao, $statusVend;
 
+    /* Trata o numero de caracteres que será inserido no campo TB02115_CELULAR */
+    $whatsapp = substr($whatsapp, 0, 11);
+
+    /* Trata o numero de caracteres que será inserido no campo TB02115_LOCAL */
+    $local = substr($local, 0, 200);
+
+    /* Trata o numero de caracteres que será inserido no campo TB02115_EMAIL */
+    $email = substr($email, 0, 200);
+
+    /* Trata o numero de caracteres que será inserido no campo TB02115_SOLICITANTE */
+    $solicitante = substr($solicitante, 0, 30);
+
+    /* Trata o numero de caracteres que será inserido no campo TB02115_SOLICITANTE */
+    $ultcont = substr($ultcont, 0, 10);
+
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 
                 TB02112_NUMSERIE NumSerie
