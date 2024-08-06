@@ -32,7 +32,7 @@ if (isset($serie)) {
     $req .= $ultContGer;
 
     /* Grava o histórico do primeiro status na abertura */
-   /*  gravaHistorico($conn, $numOS, $serie, $defeito, $statusInicial); */
+    gravaHistoricoReq($conn, $serie, $solicitante, $defeito);
 
     ?>
 

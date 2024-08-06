@@ -77,7 +77,7 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02111_EMAIL,
                 TB02112_CODSITE,
                 '$serie',
-                'Melhor periodo para visita: $periodo \nLocal ou setor: $local \nTonerPB: $tonerPB \n\nTONER COLORIDO \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro',
+                'Melhor periodo para visita: $periodo \nLocal ou setor: $local \nTonerPB: $tonerPB \n\nTONER COLORIDO \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro \nOBS: $defeito',
                 '$ultcont',
                 '$solicitante'
                  
@@ -100,6 +100,24 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
 function gravaHistoricoReq($conn, $serie, $solicitante, $defeito)
 {
     global $ultContGer, $CodVendedor, $Operacao, $Condicao, $statusVend;
+
+    /* Verifica se e patrimonio ou serie antes de gravar */
+    $sql = "SELECT TOP 1 
+                TB02112_NUMSERIE NumSerie
+            FROM TB02112
+            WHERE TB02112_PAT = '$serie'
+            AND TB02112_SITUACAO = 'A'
+            ";
+    $stmt = sqlsrv_query($conn, $sql);
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $NumSerie = $row['NumSerie'];
+    }
+
+    if ($NumSerie != NULL || $NumSerie != '') {
+        $serie = $NumSerie;
+    } else {
+
+    }
 
     $sql = "INSERT INTO TB02130
                 (TB02130_CODIGO,
@@ -127,7 +145,7 @@ function gravaHistoricoReq($conn, $serie, $solicitante, $defeito)
                 '$CodVendedor',
                 NULL,
                 TB01006_NOME, 
-                'O',
+                'V',
                 TB02111_CODCLI,
                 TB02111_CODEMP,
                 GETDATE(), 
@@ -139,5 +157,5 @@ function gravaHistoricoReq($conn, $serie, $solicitante, $defeito)
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
             WHERE TB02112_NUMSERIE = '$serie'
             AND TB02112_SITUACAO = 'A'";
-            $stmt = sqlsrv_query($conn, $sql);
+    $stmt = sqlsrv_query($conn, $sql);
 }
