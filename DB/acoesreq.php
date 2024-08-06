@@ -72,7 +72,7 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 'A',
                 3,
                 TB02111_NOME,
-                TB02112_FONEAUX,
+                '$whatsapp',
                 TB02111_CODIGO,
                 TB02111_EMAIL,
                 TB02112_CODSITE,
