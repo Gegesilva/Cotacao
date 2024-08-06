@@ -32,8 +32,9 @@ if (indentificaProd($conn, $serie) != '1') {
         <form method="POST" class="form-geral" id="form-geral">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
-                <h7 class="h7-nome-btn">Solicitação de suprimentos</h7><button class="btn-req" onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';"
-                    type="submit" class="voltar-btn-form"> > </button>
+                <h7 class="h7-nome-btn">Solicitação de suprimentos</h7><button class="btn-req" id="btn-req"
+                    onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
+                    class="voltar-btn-form"> > </button>
             </div>
             <h1 class="titulos">ABERTURA CHAMADO TEC</h1>
             <h6 class="msg-os"><?= PegaTipo($conn, $serie) ?></h6>

@@ -33,7 +33,7 @@ echo $ultContGer;
         <form method="POST" class="form-geral" id="form-geral-req">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
-                <h7 class="h7-nome-btn">Abertura chamado tec.</h7><button class="btn-req"
+                <h7 class="h7-nome-btn">Abertura chamado tec.</h7><button class="btn-req" id="btn-req"
                     onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';" type="submit"
                     class="voltar-btn-form">
                     < </button>
@@ -88,7 +88,7 @@ echo $ultContGer;
                 </div>
             </div>
             <div class="label-text-toner">
-                <label>Toner colorido:</label>
+                <label for="preto">Toner colorido:</label>
             </div>
             <div class="form-group">
                 <div class="form-input">
@@ -120,7 +120,7 @@ echo $ultContGer;
             </div>
             <div class="form-group">
                 <div class="form-input">
-                    <label for="contador">Último Contador</label>
+                    <label for="ultcont">Último Contador</label>
                     <input class="input-contador" type="number" id="ultcont" name="ultcont"
                         placeholder="<?= $UltCont; ?>" value="<?= $UltCont; ?>" required>
                 </div>

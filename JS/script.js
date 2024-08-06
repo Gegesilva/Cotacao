@@ -105,3 +105,11 @@ $('#form-geral-req').submit(function (e) {
         $('#defeito').val('');
     })
 })
+
+const btn = document.querySelector("#btn-req");
+btn.addEventListener("click", function(e) {
+    
+  e.preventDefault();
+  
+ /*  console.log("teste func"); */
+});
