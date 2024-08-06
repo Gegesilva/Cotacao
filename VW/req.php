@@ -139,6 +139,7 @@ echo $ultContGer;
                 <!-- <button onClick="window.location='<? ?>/inputSerie.php';"
                     type="submit" class="voltar-btn-form">Voltar</button> -->
             </div>
+            <input type="hidden" id="urlReq" value="<?= $url?>/savereq.php">
         </form>
         <?php
         /* gera um codigo de 6 numeros pseudo aleatorio */

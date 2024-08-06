@@ -108,6 +108,7 @@ if (indentificaProd($conn, $serie) != '1') {
                 <button onClick="window.location='<?= $url ?>/inputSerie.php';" type="submit"
                     class="voltar-btn-form">Voltar</button>
             </div>
+            <input type="hidden" id="urlOS" value="<?= $url?>/save.php">
         </form>
         <?php
         /* gera um codigo de 6 numeros pseudo aleatorio */

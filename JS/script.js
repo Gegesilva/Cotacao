@@ -11,6 +11,7 @@ $('#form-geral').submit(function (e) {
     var d_defeito = $('#defeito').val();
     var d_contador = $('#contador').val();
     var d_periodo = $('#periodo').val();
+    var d_url = $('#urlOS').val();
 
     var resultado = document.getElementById('div-save');
 
@@ -21,7 +22,7 @@ $('#form-geral').submit(function (e) {
                 d_periodo,d_cliente) */
 
     $.ajax({
-        url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/save.php',
+        url: d_url,
         method: 'POST',
         data: {
             estado: d_estado,
@@ -65,6 +66,7 @@ $('#form-geral-req').submit(function (e) {
     var d_amarelo = $('#amarelo').val();
     var d_magenta = $('#magenta').val();
     var d_outro = $('#outro').val();
+    var d_urlReq = $('#urlReq').val();
 
     var resultado = document.getElementById('div-save');
 
@@ -76,7 +78,7 @@ $('#form-geral-req').submit(function (e) {
                 d_preto, d_magenta) */
 
     $.ajax({
-        url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/savereq.php',
+        url: d_urlReq,
         method: 'POST',
         data: {
             estado: d_estado,
