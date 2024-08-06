@@ -68,12 +68,12 @@ $('#form-geral-req').submit(function (e) {
 
     var resultado = document.getElementById('div-save');
 
-    console.log(d_estado,d_serie,  
+    /* console.log(d_estado,d_serie,  
                 d_local, d_solitante, 
                 d_whatsapp, d_email, 
                 d_defeito, d_ultcont, 
                 d_periodo,d_cliente,
-                d_preto, d_magenta)
+                d_preto, d_magenta) */
 
     $.ajax({
         url: 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW/savereq.php',
@@ -98,7 +98,7 @@ $('#form-geral-req').submit(function (e) {
         },
         /* dataType: 'json' */
     }).done(function (retorno) {
-        console.log(retorno)
+        /* console.log(retorno) */
         resultado.innerHTML = retorno
         $('#serie').val('');
         $('#solicitante').val('');

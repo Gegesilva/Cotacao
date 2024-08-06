@@ -1,21 +1,22 @@
 <?php
 include_once "conexaoSQL.php";
+include_once "../Config.php";
 
 /* Gera o proximo contador */
-$sql="SELECT TOP 1
+$sql = "SELECT TOP 1
             SUBSTRING(TB00002_COD, 0, 2)+FORMAT(CAST(SUBSTRING(TB00002_COD, 2, 6) AS NUMERIC) + 1, '00000') ultContGer
         FROM TB00002
         WHERE TB00002_TABELA = 'TB02018R'";
 $stmt = sqlsrv_query($conn, $sql);
 
-while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
+while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $ultContGer = $row['ultContGer'];
 }
 
 
 function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitante, $defeito, $tonerPB, $preto, $azul, $amarelo, $magenta, $outro, $periodo)
 {
-    global $ultContGer;
+    global $ultContGer, $CodVendedor, $Operacao, $Condicao, $statusVend;
 
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 
@@ -55,7 +56,8 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02018_CODSITE,
                 TB02018_NUMSERIE,
                 TB02018_OBS,
-                TB02018_CONTTOTAL)
+                TB02018_CONTTOTAL,
+                TB02018_OPCAD)
             (SELECT 
                 '$ultContGer',
                 GETDATE(),
@@ -63,10 +65,10 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 GETDATE(),
                 TB02111_CODEMP,
                 TB02111_CODCLI,
-                '0000',
-                '00',
-                '000',
-                '00',
+                '$CodVendedor',
+                '$Operacao',
+                '$Condicao',
+                '$statusVend',
                 'A',
                 3,
                 TB02111_NOME,
@@ -76,7 +78,8 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02112_CODSITE,
                 '$serie',
                 'Melhor periodo para visita: $periodo \nLocal ou setor: $local \nTonerPB: $tonerPB \n\nTONER COLORIDO \nPreto: $preto, \nAzul: $azul, \nAmarelo: $amarelo, \nMagenta: $magenta, \nOutro: $outro',
-                '$ultcont'
+                '$ultcont',
+                '$solicitante'
                  
             FROM TB02112
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
@@ -92,4 +95,49 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
 
     ";
     $stmt = sqlsrv_query($conn, $sql);
+}
+
+function gravaHistoricoReq($conn, $serie, $solicitante, $defeito)
+{
+    global $ultContGer, $CodVendedor, $Operacao, $Condicao, $statusVend;
+
+    $sql = "INSERT INTO TB02130
+                (TB02130_CODIGO,
+                TB02130_DATA, 
+                TB02130_USER,
+                TB02130_STATUS,
+                TB02130_NOME,
+                TB02130_OBS,
+                TB02130_CODTEC,
+                TB02130_PREVISAO,
+                TB02130_NOMETEC,
+                TB02130_TIPO, 
+                TB02130_CODCAD,
+                TB02130_CODEMP,
+                TB02130_DATAEXEC,
+                TB02130_HORASCOM,
+                TB02130_HORASFIM)
+            SELECT TOP 1
+                '$ultContGer',
+                GETDATE(),
+                '$solicitante', 
+                '$statusVend', 
+                TB01021_NOME, 
+                '$defeito',
+                '$CodVendedor',
+                NULL,
+                TB01006_NOME, 
+                'O',
+                TB02111_CODCLI,
+                TB02111_CODEMP,
+                GETDATE(), 
+                '00:00', 
+                '00:00'
+            FROM TB02112
+            LEFT JOIN TB01021 ON TB01021_CODIGO = '$statusVend'
+            LEFT JOIN TB01006 ON TB01006_CODIGO = '$CodVendedor'
+            LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
+            WHERE TB02112_NUMSERIE = '$serie'
+            AND TB02112_SITUACAO = 'A'";
+            $stmt = sqlsrv_query($conn, $sql);
 }
