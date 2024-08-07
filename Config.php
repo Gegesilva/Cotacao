@@ -3,7 +3,7 @@
 
 $url = 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW'; 
 $server = 'localhost';
-$base = 'POSITIVA';
+$base = 'MAQLAREM';
 $usuarioBanco = 'sa';
 $SenhaBanco = 'databit@2022';
 $salto = 1; /* Esta variavel define o acrescimo que será feito ao ultimo numero de OS para que seja gerado o proximo */
@@ -13,6 +13,4 @@ $statusInicial = '07';
 
 /* Configurações da abertura de reuisição */
 $CodVendedor = '0000';
-$Operacao = '00';
 $Condicao = '000';
-$statusVend = '00';

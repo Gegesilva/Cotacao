@@ -3,7 +3,7 @@ session_start();
 header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../DB/conexaoSQL.php";
 include_once "../DB/acoesreq.php";
-/* include_once "../DB/dadosreq.php"; */
+include_once "../DB/dados.php";
 include_once "../Config.php";
 
 $estado = $_POST['estado'];
@@ -21,10 +21,14 @@ $azul = $_POST['azul'];
 $amarelo = $_POST['amarelo'];
 $magenta = $_POST['magenta'];
 $outro = $_POST['outro'];
+$CodEmp = $_POST['codEmp'];
 
 
 if (isset($serie)) {
-    geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitante, $defeito, $tonerPB, $preto, $azul, $amarelo, $magenta, $outro, $periodo);
+
+    list($operacaoVend, $statusVend) = empOper($CodEmp);
+    
+    geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitante, $defeito, $tonerPB, $preto, $azul, $amarelo, $magenta, $outro, $periodo, $operacaoVend, $statusVend);
 
 
     /* Pega o ultimo numero de OS aberto */
@@ -32,7 +36,7 @@ if (isset($serie)) {
     $req .= $ultContGer;
 
     /* Grava o histórico do primeiro status na abertura */
-    gravaHistoricoReq($conn, $serie, $solicitante, $defeito);
+    gravaHistoricoReq($conn, $serie, $solicitante, $defeito, $statusVend);
 
     ?>
 

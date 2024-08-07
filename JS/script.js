@@ -47,7 +47,7 @@ $('#form-geral').submit(function (e) {
 
 
 
-$('#form-geral-req').submit(function (e) {
+$('#form-geral-req').submit(function(e) {
     e.preventDefault();
 
     var d_estado = $('#estado').val();
@@ -67,6 +67,7 @@ $('#form-geral-req').submit(function (e) {
     var d_magenta = $('#magenta').val();
     var d_outro = $('#outro').val();
     var d_urlReq = $('#urlReq').val();
+    var d_codEmp = $('#codEmp').val();
 
     var resultado = document.getElementById('div-save');
 
@@ -76,6 +77,7 @@ $('#form-geral-req').submit(function (e) {
                 d_defeito, d_ultcont, 
                 d_periodo,d_cliente,
                 d_preto, d_magenta) */
+       console.log(d_codEmp);
 
     $.ajax({
         url: d_urlReq,
@@ -96,7 +98,8 @@ $('#form-geral-req').submit(function (e) {
             azul: d_azul,
             amarelo: d_amarelo,
             magenta: d_magenta,
-            outro: d_outro
+            outro: d_outro,
+            codEmp: d_codEmp
         },
         /* dataType: 'json' */
     }).done(function (retorno) {

@@ -14,9 +14,9 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 }
 
 
-function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitante, $defeito, $tonerPB, $preto, $azul, $amarelo, $magenta, $outro, $periodo)
+function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitante, $defeito, $tonerPB, $preto, $azul, $amarelo, $magenta, $outro, $periodo, $operacaoVend, $statusVend)
 {
-    global $ultContGer, $CodVendedor, $Operacao, $Condicao, $statusVend;
+    global $ultContGer, $CodVendedor, $Condicao;
 
     /* Trata o numero de caracteres que será inserido no campo TB02115_CELULAR */
     $whatsapp = substr($whatsapp, 0, 11);
@@ -81,7 +81,7 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
                 TB02111_CODEMP,
                 TB02111_CODCLI,
                 '$CodVendedor',
-                '$Operacao',
+                '$operacaoVend',
                 '$Condicao',
                 '$statusVend',
                 'A',
@@ -99,6 +99,7 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
             FROM TB02112
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
             WHERE TB02112_SITUACAO = 'A'
+            AND TB02111_TIPOCONTR = 'L'
             AND TB02112_NUMSERIE = '$serie')
 
             UPDATE 
@@ -112,9 +113,9 @@ function geraReq($conn, $local, $email, $ultcont, $serie, $whatsapp, $solicitant
     $stmt = sqlsrv_query($conn, $sql);
 }
 
-function gravaHistoricoReq($conn, $serie, $solicitante, $defeito)
+function gravaHistoricoReq($conn, $serie, $solicitante, $defeito, $statusVend)
 {
-    global $ultContGer, $CodVendedor, $Operacao, $Condicao, $statusVend;
+    global $ultContGer, $CodVendedor, $Operacao, $Condicao;
 
     /* Verifica se e patrimonio ou serie antes de gravar */
     $sql = "SELECT TOP 1 

@@ -24,13 +24,16 @@ function preenchimento($conn, $serie)
                 TB02112_EMAIL Email,
                 (SELECT TOP 1 TB02117_TOTPB FROM TB02117 WHERE TB02117_NUMSERIE = TB02112_NUMSERIE ORDER BY TB02117_DTCAD DESC) UltCont,
                 TB02112_NUMSERIE Serie,
-				TB02112_FONEAUX Tel
+                TB02112_FONEAUX Tel,
+                TB02176_CODEMP CodEmp
                 
             FROM TB02112
             LEFT JOIN TB02111 ON TB02111_CODIGO = TB02112_CODIGO
             LEFT JOIN TB01008 ON TB01008_CODIGO = TB02111_CODCLI
+            LEFT JOIN TB02176 ON TB02176_CONTRATO = TB02111_CODIGO AND TB02176_CODIGO = TB02112_CODSITE
 
             WHERE TB02112_SITUACAO = 'A'
+            --AND TB02111_TIPOCONTR = 'L'
             $filtroPatSerie
     ";
     $stmt = sqlsrv_query($conn, $sql);
@@ -43,9 +46,10 @@ function preenchimento($conn, $serie)
         $Email = $row['Email'];
         $Serie = $row['Serie'];
         $Tel = $row['Tel'];
+        $CodEmp = $row['CodEmp'];
     }
 
-    return [$estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel];
+    return [$estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel, $CodEmp];
 
 }
 
@@ -116,4 +120,34 @@ function indentificaProd($conn, $serie)
     }
 
     return $existProd;
+}
+
+function empOper($CodEmp)
+{
+    switch ($CodEmp) {
+        case '00':
+            $operacaoVend = '10';
+            $statusVend = 'J0';
+            break;
+        case '01':
+            $operacaoVend = '37';
+            $statusVend = 'J7';
+            break;
+        case '02':
+            $operacaoVend = '43';
+            $statusVend = 'J9';
+            break;
+        case '03':
+            $operacaoVend = '10';
+            $statusVend = 'J0';
+        case '07':
+            $operacaoVend = '47';
+            $statusVend = 'K1';
+            break;
+        case '08':
+            $operacaoVend = '43';
+            $statusVend = 'K1';
+    }
+
+    return [$operacaoVend, $statusVend];
 }

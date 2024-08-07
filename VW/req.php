@@ -6,7 +6,7 @@ include_once "../Config.php";
 
 $serie = $_GET["serie"];
 
-list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento($conn, $serie);
+list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel, $CodEmp) = preenchimento($conn, $serie);
 
 
 if (indentificaProd($conn, $serie) != '1') {
@@ -14,7 +14,7 @@ if (indentificaProd($conn, $serie) != '1') {
     return;
 }
 
-echo $ultContGer;
+echo $CodEmp;
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ echo $ultContGer;
             <div class="form-group">
                 <div class="form-input">
                     <label for="solicitante">Solicitante *</label>
-                    <input type="text" id="solicitante" name="solicitante" placeholder="Quem esta abrindo a OS"
+                    <input type="text" id="solicitante" name="solicitante" placeholder="Quem esta abrindo a requisição."
                         required>
                 </div>
                 <div class="form-input">
@@ -140,6 +140,7 @@ echo $ultContGer;
                     type="submit" class="voltar-btn-form">Voltar</button> -->
             </div>
             <input type="hidden" id="urlReq" value="<?= $url?>/savereq.php">
+            <input type="hidden" name="codEmp" id="codEmp" value="<?= $CodEmp ?>">
         </form>
         <?php
         /* gera um codigo de 6 numeros pseudo aleatorio */
