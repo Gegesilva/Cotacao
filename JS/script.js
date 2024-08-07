@@ -77,7 +77,6 @@ $('#form-geral-req').submit(function(e) {
                 d_defeito, d_ultcont, 
                 d_periodo,d_cliente,
                 d_preto, d_magenta) */
-       console.log(d_codEmp);
 
     $.ajax({
         url: d_urlReq,
