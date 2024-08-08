@@ -2,12 +2,11 @@
 include_once "../config.php";
 
 /* Gera o proximo numero de OS */
-$sql = "SELECT TOP 1 
-            FORMAT((TB02115_CODIGO + $salto), '000000') novaOS
-        FROM TB02115 
-        WHERE NOT EXISTS (SELECT * FROM TB00002 WHERE TB00002_COD = (TB02115_CODIGO + $salto) AND TB00002_TABELA = 'TB02115') 
-        AND TB02115_CODIGO != FORMAT((TB02115_CODIGO + $salto), '000000')
-        ORDER BY TB02115_CODIGO DESC
+$sql = "SELECT TOP 1
+            TB00002_COD + 1 novaOS 
+        FROM TB00002
+        WHERE 
+            TB00002_TABELA = 'TB02115'
     ";
 $stmt = sqlsrv_query($conn, $sql);
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
