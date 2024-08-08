@@ -116,6 +116,7 @@ if (indentificaProd($conn, $serie) != '1') {
         //echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
         ?>
     </div>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../JS/script.js" charset="utf-8"></script>
 </body>
