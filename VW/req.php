@@ -25,6 +25,7 @@ echo $CodEmp;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DATABIT</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/styleBtn.css">
 </head>
 
 <body>
@@ -33,12 +34,16 @@ echo $CodEmp;
         <form method="POST" class="form-geral" id="form-geral-req">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
-                <h7 class="h7-nome-btn">Abertura chamado tec.</h7><button class="btn-req" id="btn-req"
-                    onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';" type="submit"
-                    class="voltar-btn-form">
-                    < </button>
             </div>
             <h1 class="titulos">SOLICITAÇÃO DE SUPRIMENTO</h1>
+            <div class="buttons-forms">
+                <button class="btn-req" id="btn-req" style="color: black; opacity: 0.4;"
+                    onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
+                    class="voltar-btn-form">Chamado tec</button>
+                <button class="btn-req" id="btn-req"
+                    onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
+                    class="voltar-btn-form">Suprimentos</button>
+            </div>
             <h6 class="msg-os"><? /* PegaTipo($conn, $serie) */ ?></h6>
             <div class="form-group">
                 <div class="form-input">

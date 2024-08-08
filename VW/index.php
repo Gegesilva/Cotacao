@@ -23,6 +23,7 @@ if (indentificaProd($conn, $serie) != '1') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DATABIT</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/styleBtn.css">
 </head>
 
 <body>
@@ -32,11 +33,16 @@ if (indentificaProd($conn, $serie) != '1') {
         <form method="POST" class="form-geral" id="form-geral">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
-                <h7 class="h7-nome-btn">Solicitação de suprimentos</h7><button class="btn-req" id="btn-req"
-                    onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
-                    class="voltar-btn-form"> > </button>
             </div>
             <h1 class="titulos">ABERTURA CHAMADO TEC</h1>
+            <div class="buttons-forms">
+                <button class="btn-req" id="btn-req" style="color: black; opacity: 0.4;"
+                    onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
+                    class="voltar-btn-form">Chamado tec</button>
+                <button class="btn-req" id="btn-req"
+                    onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
+                    class="voltar-btn-form">Suprimentos</button>
+            </div>
             <h6 class="msg-os"><?= PegaTipo($conn, $serie) ?></h6>
             <div class="form-group">
                 <div class="form-input">
@@ -108,7 +114,7 @@ if (indentificaProd($conn, $serie) != '1') {
                 <button onClick="window.location='<?= $url ?>/inputSerie.php';" type="submit"
                     class="voltar-btn-form">Voltar</button>
             </div>
-            <input type="hidden" id="urlOS" value="<?= $url?>/save.php">
+            <input type="hidden" id="urlOS" value="<?= $url ?>/save.php">
         </form>
         <?php
         /* gera um codigo de 6 numeros pseudo aleatorio */
@@ -116,7 +122,7 @@ if (indentificaProd($conn, $serie) != '1') {
         //echo 'A'.sprintf("%'.05d\n",  mt_rand(0, 0xF00));
         ?>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../JS/script.js" charset="utf-8"></script>
 </body>
