@@ -115,3 +115,8 @@ const btn = document.querySelector("#btn-req");
 btn.addEventListener("click", function (e) {
     e.preventDefault();
 });
+
+const btnSup = document.querySelector("#btn-req-sup");
+btnSup.addEventListener("click", function (e) {
+    e.preventDefault();
+});

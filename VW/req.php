@@ -37,10 +37,10 @@ echo $CodEmp;
             </div>
             <h1 class="titulos">SOLICITAÇÃO DE SUPRIMENTO</h1>
             <div class="buttons-forms">
-                <button class="btn-req" id="btn-req" style="color: black; opacity: 0.4;"
-                    onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
-                    class="voltar-btn-form">Chamado tec</button>
                 <button class="btn-req" id="btn-req"
+                    onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';" type="submit"
+                    class="voltar-btn-form">Chamado tec</button>
+                <button class="btn-req" id="btn-req-sup" style="color: black; opacity: 0.4;"
                     onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
                     class="voltar-btn-form">Suprimentos</button>
             </div>
@@ -144,7 +144,7 @@ echo $CodEmp;
                 <!-- <button onClick="window.location='<? ?>/inputSerie.php';"
                     type="submit" class="voltar-btn-form">Voltar</button> -->
             </div>
-            <input type="hidden" id="urlReq" value="<?= $url?>/savereq.php">
+            <input type="hidden" id="urlReq" value="<?= $url ?>/savereq.php">
             <input type="hidden" name="codEmp" id="codEmp" value="<?= $CodEmp ?>">
         </form>
         <?php
