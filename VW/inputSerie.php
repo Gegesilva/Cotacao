@@ -3,9 +3,9 @@ header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../Config.php";
 
 $ret = $_GET['ret'];
-if($ret == '1'){
+if ($ret == '1') {
     $msgErr = 'Série ou patrimônio inexistente!';
-}else{
+} else {
     $msgErr = '';
 }
 ?>
@@ -30,7 +30,7 @@ if($ret == '1'){
             </div>
         </div>
         <button type="submit" class="submit-btn">OK</button>
-        <?="<h1 class='retErro'>$msgErr<h1>";?>
+        <?= "<h1 class='retErro'>$msgErr<h1>"; ?>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../JS/script.js" charset="utf-8"></script>
