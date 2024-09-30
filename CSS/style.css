@@ -17,6 +17,14 @@ body {
     width: 40rem;
 }
 
+.divResult {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
 @media screen and (max-width: 740px) {
 
     .form-geral,
@@ -173,6 +181,44 @@ img {
     color: blue;
 }
 
+/* Filtros de lista */
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+    border: 1px solid blue;
+    border-radius: 20px;
+    width: 100%;
+    margin-left: 2px;
+
+  }
+
+  input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .select-items {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .select-items div {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .select-items div:hover {
+    background-color: #f1f1f1;
+  }
 
 
 

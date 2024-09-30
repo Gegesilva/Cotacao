@@ -1,18 +1,14 @@
 <?php
 header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../DB/conexaoSQL.php";
-include_once "../DB/dados.php";
+include_once "../DB/filtros.php";
 include_once "../Config.php";
 
-$serie = $_GET["serie"];
 
-list($estado, $Cliente, $Local, $UltCont, $Email, $Serie, $Tel) = preenchimento($conn, $serie);
-
-
-if (indentificaProd($conn, $serie) != '1') {
+/* if (indentificaProd($conn, $serie) != '1') {
     header("Location: ../VW/inputSerie.php?ret=1");
     return;
-}
+} */
 ?>
 
 <!DOCTYPE html>
@@ -30,89 +26,66 @@ if (indentificaProd($conn, $serie) != '1') {
     <!--  <form method="POST" class="form-geral" action="<?= $url ?>/save.php"> -->
     <div class="div-save" id="div-save"></div>
     <div class="div-form">
-        <form method="POST" class="form-geral" id="form-geral">
+        <form method="POST" action="result.php" class="form-geral">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
             </div>
-            <h1 class="titulos">ABERTURA CHAMADO TEC</h1>
+            <h1 class="titulos"></h1>
             <div class="buttons-forms">
                 <button class="btn-req" id="btn-req" style="color: black; opacity: 0.4;"
                     onClick="window.location='<?= $url ?>/index.php?serie=<?= $serie ?>';" type="submit"
-                    class="voltar-btn-form">Chamado tec</button>
+                    class="voltar-btn-form">Maquinas</button>
                 <button class="btn-req" id="btn-req-sup"
                     onClick="window.location='<?= $url ?>/req.php?serie=<?= $serie ?>';" type="submit"
-                    class="voltar-btn-form">Suprimentos</button>
+                    class="voltar-btn-form">SUPRIMENTOS</button>
             </div>
-            <h6 class="msg-os"><?= PegaTipo($conn, $serie) ?></h6>
+            <h6 class="msg-os"></h6>
             <div class="form-group">
                 <div class="form-input">
-                    <label for="estado">Estado *</label>
-                    <input type="text" id="estado" name="estado" placeholder="<?= $estado ?>" value="<?= $estado ?>"
-                        required readonly>
-                </div>
-                <div class="form-input">
-                    <label for="serie">Série/Pat *</label>
-                    <input id="serie" name="serie" rows="4" placeholder="<?= $serie; ?>" value="<?= $serie ?>" required
-                        readonly></input>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-input">
-                    <label for="cliente">Nome do Cliente</label>
-                    <input type="text" id="cliente" name="cliente" placeholder="<?= $Cliente; ?>"
-                        value="<?= $Cliente; ?>" readonly>
-                </div>
-                <div class="form-input">
-                    <label for="local">Local*</label>
-                    <input type="text" id="local" name="local" placeholder="<?= $Local; ?>" value="<?= $Local; ?>"
-                        required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-input">
-                    <label for="solicitante">Solicitante *</label>
-                    <input type="text" id="solicitante" name="solicitante" placeholder="Quem esta abrindo a OS"
+                    <label for="serie">Serie*</label>
+                    <input type="text" id="serie" name="serie" placeholder="<?= $estado ?>" value="<?= $estado ?>"
                         required>
                 </div>
                 <div class="form-input">
-                    <label for="whatsapp">Whatsapp * <small>(00000000000)</small></label>
-                    <input type="text" id="whatsapp" name="whatsapp" placeholder="<?= $Tel ?>" value="<?= $Tel ?>"
-                        required>
+                    <label for="estado">Estado*</label>
+                    <div class="custom-select">
+                        <input type="text" name="estado" class="estado" id="selectEstado"
+                            placeholder="Digite para filtrar" onkeyup="filterEstado()">
+                        <div id="selectEstadoLista" class="select-items">
+                            <?php filtroEstado($conn); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-input">
-                    <label for="e-mail">E-mail</label>
-                    <input type="text" id="e-mail" name="e-mail" placeholder="<?= $Email; ?>" value="<?= $Email; ?>"
-                        required>
+                    <label for="pessoa">Tipo Pessoa *</label>
+                    <select name="pessoa" id="">
+                        <option value="F">Fisica</option>
+                        <option value="J">Juridica</option>
+                    </select>
+                </div>
+                <div class="form-input">
+                    <label for="consumo">CONS/REV *</label>
+                    <select name="consumo" id="">
+                        <option value="S">Consumo</option>
+                        <option value="N">Revenda</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-input">
-                    <label for="defeito">Defeito Apresentado *</label>
-                    <textarea id="defeito" name="defeito" rows="4" required></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-input">
-                    <label for="contador">Último Contador</label>
-                    <input class="input-contador" type="number" id="contador" name="contador"
-                        placeholder="<?= $UltCont; ?>" value="<?= $UltCont; ?>" required>
-                </div>
-                <div class="form-input">
-                    <label for="periodo">Período</label>
-                    <select id="periodo" name="periodo" required>
-                        <option value="Manhã">Manhã</option>
-                        <option value="Tarde">Tarde</option>
-                        <option value="Indiferente">Indiferente</option>
+                    <label for="condicao">Condição de Receb *</label>
+                    <select name="condicao" id="condicao">
+                        <?php filtroCondicao($conn); ?>
                     </select>
                 </div>
             </div>
             <div class="btn-index">
                 <input type="hidden" name="trava" id="trava" value="1">
-                <button type="submit" class="submit-btn">Enviar OS</button>
-                <button onClick="window.location='<?= $url ?>/inputSerie.php';" type="submit"
-                    class="voltar-btn-form">Voltar</button>
+                <button type="submit" class="submit-btn">Gerar</button>
+                <!--  <button onClick="window.location='.php';" type="submit"
+                    class="voltar-btn-form">Voltar</button> -->
             </div>
             <input type="hidden" id="urlOS" value="<?= $url ?>/save.php">
         </form>

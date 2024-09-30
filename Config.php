@@ -3,7 +3,7 @@
 
 $url = 'http://localhost:8090/phpprod/maqlarem/AberturaOS/VW'; 
 $server = 'localhost';
-$base = 'MAQLAREM';
+$base = 'TINSEI';
 $usuarioBanco = 'sa';
 $SenhaBanco = 'databit@2022';
 $salto = 1; /* Esta variavel define o acrescimo que será feito ao ultimo numero de OS para que seja gerado o proximo */

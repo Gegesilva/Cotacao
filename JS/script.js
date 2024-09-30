@@ -1,3 +1,47 @@
+/* Tratamento de filtros select */
+ // Mostrar as opções ao focar no campo de texto
+ document.getElementById("selectEstado").addEventListener("focus", function() {
+    document.getElementById("selectEstadoLista").style.display = "block";
+  });
+
+  // Ocultar as opções ao clicar fora
+  document.addEventListener("click", function(e) {
+    if (!e.target.closest(".custom-select")) {
+      document.getElementById("selectEstadoLista").style.display = "none";
+    }
+  });
+
+  // Função de filtro para o select
+  function filterEstado() {
+    const filter = document.getElementById("selectEstado").value.toLowerCase();
+    const options = document.getElementById("selectEstadoLista").getElementsByTagName("div");
+
+    for (let i = 0; i < options.length; i++) {
+      const optionText = options[i].textContent || options[i].innerText;
+      if (optionText.toLowerCase().indexOf(filter) > -1) {
+        options[i].style.display = "";
+      } else {
+        options[i].style.display = "none";
+      }
+    }
+  }
+
+  // Selecionar um item da lista
+  const items = document.getElementById("selectEstadoLista").getElementsByTagName("div");
+  for (let i = 0; i < items.length; i++) {
+    items[i].addEventListener("click", function() {
+      document.getElementById("selectEstado").value = this.innerText;
+      document.getElementById("selectEstadoLista").style.display = "none";
+    });
+  }
+
+
+
+
+
+
+
+
 $('#form-geral').submit(function (e) {
     e.preventDefault();
 
@@ -120,3 +164,5 @@ const btnSup = document.querySelector("#btn-req-sup");
 btnSup.addEventListener("click", function (e) {
     e.preventDefault();
 });
+
+
