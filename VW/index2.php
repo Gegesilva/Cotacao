@@ -3,18 +3,27 @@ header('Content-type: text/html; charset=ISO-8895-1');
 include_once "../DB/conexaoSQL.php";
 include_once "../DB/filtros.php";
 include_once "../Config.php";
+/* pega o array recebido no formado de URL e transforma em array comum */
+$serie = unserialize(urldecode($_GET['serie']));
 
-$serie = $_GET['serie'];
+if($serie){
+    /* coloca os itens do array saparados por virgula */
+    $seriesSelecionadas = implode(",", array_map('htmlspecialchars', $serie)) ;
+    /* coloca os itens ds array entre aspas simples e separa por virgula */
+    $seriesSelecionadasAspas = "'" . implode("', '", array_map('htmlspecialchars', $serie)) . "'";
+}
 
 /* Pega o codigo do prod */
-$sql = "SELECT TOP 1 TB02054_PRODUTO Prod FROM TB02054
-        WHERE TB02054_NUMSERIE = '$serie'";
+$sql = "SELECT STRING_AGG(TB02054_PRODUTO, ',') Prod FROM TB02054
+        WHERE TB02054_NUMSERIE IN ($seriesSelecionadasAspas)
+        AND TB02054_QTPROD > TB02054_QTPRODS";
 
 $stmt = sqlsrv_query($conn, $sql);
 
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
     $Prod = $row['Prod'];
 }
+
 
 ?>
 
@@ -39,7 +48,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
             </div>
             <h1 class="titulos"></h1>
             <div class="buttons-forms">
-                <button class="btn-req" id="btn-req" onClick="window.location='index.php?serie=<?= $serie; ?>';" type="submit"
+                <button class="btn-req" id="btn-req" onClick="voltar();" type="submit"
                     class="voltar-btn-form">Maquinas</button>
                 <button class="btn-req" id="btn-req-sup" style="color: black; opacity: 0.4;"
                     onClick="window.location='index2.php';" type="submit" class="voltar-btn-form">SUPRIMENTOS</button>
@@ -49,8 +58,7 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                 <div class="form-group">
                     <div class="form-input">
                         <label for="produto">Produto</label>
-                        <input type="text" class="produto" name="produto" value="<?= $Prod; ?>"
-                            placeholder="<?= $Prod; ?>" required autofocus>
+                        <textarea id="selecionado" name="selecionado" rows="1"><?= $Prod; ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -76,8 +84,8 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
                     <div class="form-input">
                         <label for="pessoa">Tipo Pessoa *</label>
                         <select name="pessoa" id="">
-                            <option value="F">Fisica</option>
                             <option value="J">Juridica</option>
+                            <option value="F">Fisica</option>
                         </select>
                     </div>
                     <div class="form-input">

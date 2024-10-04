@@ -82,7 +82,7 @@ if($consumo == 'N'){
             <h6 class="msg-os"></h6>
             <div class="form-group">
                 <div class="form-input">
-                    <table class="table table-sm" style="font-size: 12px;">
+                    <table id="minhaTabela" class="table table-sm" style="font-size: 12px;">
                         <thead>
                             <tr>
                                 <th>PRODUTO</th>
@@ -92,7 +92,7 @@ if($consumo == 'N'){
                                 <th>VALOR IPI</th>
                                 <th>ST</th>
                                 <th>DIFAL ST</th>
-                                <th>VALOR FINAL</th>
+                                <th id="valor1">VALOR FINAL</th>
                                 <th>MEDIDOR PB</th>
                                 <th>MEDIDOR COLOR</th>
                                 <th>MEDIDOR TOTAL</th>
@@ -174,7 +174,7 @@ if($consumo == 'N'){
                                     $tabela .= "<td>" . $row['VALORIPI'] . "</td>";
                                     $tabela .= "<td>" . $row['ST'] . "</td>";
                                     $tabela .= "<td>" . $row['DIFALST'] . "</td>";
-                                    $tabela .= "<td class='quantidade'>" .$row['VALORFINAL'] . "</td>";
+                                    $tabela .= "<td>" . $row['VALORFINAL'] . "</td>";
                                     $tabela .= "<td>" . $row['MEDIDORPB'] . "</td>";
                                     $tabela .= "<td>" . $row['MEDIDORCOLOR'] . "</td>";
                                     $tabela .= "<td>" . $row['MEDIDORTOTAL'] . "</td>";
@@ -188,12 +188,6 @@ if($consumo == 'N'){
                         /* } */
 
                         ?>
-                        <!-- <tfoot>
-                            <tr>
-                                <td>Total</td>
-                                <td id=total></td>
-                            </tr>
-                        </tfoot> -->
                     </table>
                 </div>
             </div>

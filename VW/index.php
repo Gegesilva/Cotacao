@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } 
 }
 
+$serieEnvio =  urlencode(serialize($selecionados));
+
 $serie = $_GET['serie'];
 
 
@@ -43,7 +45,7 @@ $serie = $_GET['serie'];
             <div class="buttons-forms">
                 <button class="btn-req" id="btn-req" style="color: black; opacity: 0.4;"
                     onClick="window.location='index.php';" type="submit" class="voltar-btn-form">Equipamentos</button>
-                <button class="btn-req" id="btn-req-sup" onClick="window.location='index2.php?serie=<?= $serie; ?>';"
+                <button class="btn-req" id="btn-req-sup" onClick="window.location='index2.php?serie=<?= $serieEnvio; ?>';"
                     type="submit" class="voltar-btn-form">suprimentos</button>
             </div>
             <form method="POST" action="result.php">
