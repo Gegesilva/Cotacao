@@ -33,11 +33,33 @@ function filtroCondicao($conn)
     $opcao = "";
 
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        $opcao .= "<option name='CondRec' value='$row[Cod]'>$row[CondRec]</option>";
+        $opcao .= "<div id='itemSelect' data-condicao='$row[Cod]'>$row[CondRec]</div>";
 
     }
-
-    $opcao .= "<option disabled selected>CondRec</option>
-                    </select>";
     return print ($opcao);
 }
+
+function filtroTabela($conn)
+{
+    $sql = "SELECT 
+                TB01020_CODIGO Cod, 
+                TB01020_NOME Nome 
+            FROM TB01020
+            WHERE TB01020_SITUACAO = 'A'";
+
+    $stmt = sqlsrv_query($conn, $sql);
+
+    if ($stmt === false) {
+        die(print_r(sqlsrv_errors(), true));
+    }
+
+
+    $opcao = "";
+
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        $opcao .= "<div  data-tabela='$row[Cod]'>$row[Nome]</div>";
+
+    }
+    return print ($opcao);
+}
+

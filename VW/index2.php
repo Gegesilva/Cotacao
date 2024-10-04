@@ -4,20 +4,17 @@ include_once "../DB/conexaoSQL.php";
 include_once "../DB/filtros.php";
 include_once "../Config.php";
 
-//Pega as series selecionadas
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verifica se alguma célula foi selecionada
-    if (isset($_POST['selecionado']) && is_array($_POST['selecionado'])) {
-        // Recupera os valores das células selecionadas
-        $selecionados = $_POST['selecionado'];
-
-        // Coloca os valores dentro de aspas simples e os separa por vírgula
-        $seriesSelecionadas = implode(",", array_map('htmlspecialchars', $selecionados)) ;
-    } 
-}
-
 $serie = $_GET['serie'];
 
+/* Pega o codigo do prod */
+$sql = "SELECT TOP 1 TB02054_PRODUTO Prod FROM TB02054
+        WHERE TB02054_NUMSERIE = '$serie'";
+
+$stmt = sqlsrv_query($conn, $sql);
+
+while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+    $Prod = $row['Prod'];
+}
 
 ?>
 
@@ -35,24 +32,34 @@ $serie = $_GET['serie'];
 <body>
     <!--  <form method="POST" class="form-geral" action="<?= $url ?>/save.php"> -->
     <div class="div-save" id="div-save"></div>
+    <div class="div-form">
         <div class="form-geral">
             <img src="../img/logo.jpg" alt="logo">
             <div class="btn-solic-btn">
             </div>
             <h1 class="titulos"></h1>
             <div class="buttons-forms">
-                <button class="btn-req" id="btn-req" style="color: black; opacity: 0.4;"
-                    onClick="window.location='index.php';" type="submit" class="voltar-btn-form">Equipamentos</button>
-                <button class="btn-req" id="btn-req-sup" onClick="window.location='index2.php?serie=<?= $serie; ?>';"
-                    type="submit" class="voltar-btn-form">suprimentos</button>
+                <button class="btn-req" id="btn-req" onClick="window.location='index.php?serie=<?= $serie; ?>';" type="submit"
+                    class="voltar-btn-form">Maquinas</button>
+                <button class="btn-req" id="btn-req-sup" style="color: black; opacity: 0.4;"
+                    onClick="window.location='index2.php';" type="submit" class="voltar-btn-form">SUPRIMENTOS</button>
             </div>
-            <form method="POST" action="result.php">
-
+            <form method="POST" action="result2.php">
                 <h6 class="msg-os"></h6>
                 <div class="form-group">
                     <div class="form-input">
-                        <label for="selecionado">Series*</label>
-                        <textarea id="selecionado" name="selecionado" rows="1"><?= $seriesSelecionadas; ?></textarea>
+                        <label for="produto">Produto</label>
+                        <input type="text" class="produto" name="produto" value="<?= $Prod; ?>"
+                            placeholder="<?= $Prod; ?>" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-input">
+                        <label for="tipo">Tipo *</label>
+                        <select name="tipo" id="" required>
+                            <option value="01">Suprimento</option>
+                            <option value="00">Equipamento</option>
+                        </select>
                     </div>
                     <div class="form-input">
                         <label for="estado">Estado*</label>
@@ -69,8 +76,8 @@ $serie = $_GET['serie'];
                     <div class="form-input">
                         <label for="pessoa">Tipo Pessoa *</label>
                         <select name="pessoa" id="">
-                            <option value="J">Juridica</option>
                             <option value="F">Fisica</option>
+                            <option value="J">Juridica</option>
                         </select>
                     </div>
                     <div class="form-input">
@@ -92,22 +99,12 @@ $serie = $_GET['serie'];
                             </div>
                         </div>
                     </div>
-                    <div class="form-input">
-                        <label for="condicao">Tabela *</label>
-                        <div class="custom-select">
-                            <input type="text" name="tabela" class="tabela" id="selectTabela"
-                                placeholder="Digite para filtrar" onkeyup="filterTabela()">
-                            <div id="selectTabelaLista" class="select-items">
-                                <?php filtroTabela($conn); ?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="btn-index">
                     <input type="hidden" name="trava" id="trava" value="1">
                     <button type="submit" class="submit-btn">Gerar</button>
-                    <a onClick="window.location='../../EquipReservados/index.php';"
-                        type="" class="voltar-btn-form">Voltar</a>
+                    <!--  <button onClick="window.location='.php';" type="submit"
+                    class="voltar-btn-form">Voltar</button> -->
                 </div>
                 <input type="hidden" id="urlOS" value="<?= $url ?>/save.php">
             </form>
